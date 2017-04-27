@@ -1,0 +1,15 @@
+npm and installation
+1.the largest  JS packaging system
+2.
+    2.0.5
+    major.minor.patch
+
+3.npm init 
+4.https://www.npmjs.com/package/chalk && moment && jasmin-node 
+5.middleware and static files
+6.cookie http://expressjs.com/en/resources/middleware/cookie-parser.html
+7.EJS template engine(APS.net webform)
+npm install --save ejs
+8.query string req.query.ok
+9.post req.body.
+10.express-generator
