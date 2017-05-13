@@ -1,0 +1,6 @@
+."C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath "C:\Users\leaks\Desktop\Projects\WEB class\demoCMS\data"
+."C:\Program Files\MongoDB\Server\3.4\bin\mongo.exe" for shell
+
+ 1.log in
+ 2.include in ejs template
+ 3.session npm i express-session --save
