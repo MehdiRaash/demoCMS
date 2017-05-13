@@ -1,0 +1,24 @@
+{
+  "name": "democms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "album",
+    "images"
+  ],
+  "author": "Mehdi Raash",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "lme": "^1.5.1",
+    "mongoose": "^4.9.8"
+  }
+}
