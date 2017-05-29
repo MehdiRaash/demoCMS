@@ -1,9 +1,6 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var config = require('../config');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser'); 
+var config = require('../config'); 
 
 var user_model = require('../models/user_model');
 
