@@ -8,8 +8,11 @@ router.use(function timeLog (req, res, next) {
   next();
 });
 
+router.get('/', function (req, res) {
+    res.render("test", { name :req.params.name , site_name: config.site_name}); 
+}); 
 router.get('/:id', function (req, res) {
-    res.render("index", { name :req.params.name , site_name: config.site_name}); 
+    res.render("test", { name :req.params.name , site_name: config.site_name}); 
 }); 
 
 router.get('/json', function(req, res){

@@ -1,17 +1,30 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var config = require('../config');
-var session = require('express-session');
-var cookieParser = require('cookie-parser');
+var config = require('../config'); 
 
 
 var router = express.Router();
  
 router.get('/', function (req, res) {
-  var sess = req.session; 
-  res.send(200)
- // res.render('dashboard', {loggedIn:sess.loggedIn,site_name: config.site_name});
+  var sess = req.session;  
+  var loggedIn = true;
+
+  if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){ 
+    loggedIn = false;
+    res.redirect('/');
+    res.sendStatus(404);
+
+  }else{
+
+    res.render('dashboard', {
+      loggedIn : loggedIn, 
+      site_name: config.site_name, 
+      firstName: sess.firstName, 
+      lastName : sess.lastName
+    });
+
+  }
+
 }); 
 
 module.exports = router;

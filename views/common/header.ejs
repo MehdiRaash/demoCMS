@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>demoCMS</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body> 
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo"><%= site_name %></a>
+      <ul class="left hide-on-med-and-down">
+        <% if(typeof loggedIn === "undefined" || loggedIn === false) {%>
+        <li style="max-width: 412px;" >
+          <form action="/login" method="POST" id="loginFrom">
+          <div class="row" style="margin:0 !important">
+            <div class="input-field col s4">
+              <input style="color:darkslategrey"   id="email" name="email" type="text" class="demoCMS-input validate">
+              <label for="email" class="Inputlabel">ایمیل</label>
+            </div> 
+            <div class="input-field col s4">
+              <input style="color:darkslategrey"   id="password" name="password" type="password" class="demoCMS-input validate">
+              <label for="password" class="Inputlabel">رمز عبور</label>
+            </div>
+            <div class="col s4">
+              <a class="waves-effect waves-light btn blue darken-1" id="login_link">ورود</a>
+            </div>
+          </div>
+          </form> 
+        </li>
+        <% }else if(typeof firstName !== "undefined" && typeof lastName !== "undefined"){ %>
+        <li>
+          <div class="chip">
+            <img src="public/images/user_images/user.jpg" alt="Contact Person">
+            <%= firstName + ' ' + lastName %>
+          </div>
+        </li>
+        <li>
+            <a class="btn-floating btn waves-effect waves-light red" href="dashboard/new_post"><i class="material-icons">add</i></a>
+        </li> 
+        <% } %>
+      </ul> 
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">mobile only</a></li> 
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
