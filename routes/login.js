@@ -13,7 +13,7 @@ var jsonParser = bodyParser.json();
  
 router.post('/', urlencodedParser, function (req, res) {
 
-  var user_email = req.body.email;
+  var user_email    = req.body.email;
   var user_password = req.body.password; 
   
   var sess = req.session; 
