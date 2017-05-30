@@ -9,7 +9,7 @@ var postSchema = mongoose.Schema({
     createdAt: Date,
     whoCreated: ObjectId
 });
-var User = mongoose.model('post', postSchema, 'post'); 
+var Post = mongoose.model('post', postSchema, 'post'); 
 
 module.exports = {
 
