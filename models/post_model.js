@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/demoCMS');
 var db = mongoose.connection;
  
-
-var postSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var postSchema = Schema({
     title: String,
     text: String,  
     createdAt: Date,
-    whoCreated: ObjectId
+    whoCreated: Schema.ObjectId
 });
 var Post = mongoose.model('post', postSchema, 'post'); 
 
