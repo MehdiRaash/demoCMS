@@ -3,10 +3,7 @@
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
-
-    $('a#login_link').click(function(){
-      $('form#loginFrom').submit();
-    });
+ 
            
     setTimeout(function(){
       $('input').val('');

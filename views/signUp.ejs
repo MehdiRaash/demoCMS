@@ -4,40 +4,47 @@
     <div class="section">
       <div class="row">
         <h5>ثبت نام</h5>
-        <form class="right col m8 s12" action="/signup/submit" method="POST" target="remember" autocomplete="off">
-          <div class="row">
-              <div class="input-field col s6"> 
-                <input autocomplete="off" name="firstName" type="text" value="" class="validate">
-                <label for="firstName">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input autocomplete="off" name="lastName" type="text" value="" class="validate">
-                <label for="lastName">Last Name</label>
-              </div>
+        <div class="row">
+          <div class="col m6 s12 offset-m6">
+          <% if(hasError === true){ %> 
+            <div class="card-panel">
+              <h5 class="red-text text-darken-2">خطا :</h5>
+              <% errors.forEach(function(error){ %> 
+              <p class="red-text text-lighten-2"> - <%= error %></p>
+              <% }); %>
+            </div>  
+          <% } %> 
+          </div>
+        </div>
+        <form class="col m6 s12 offset-m6" action="/signup/submit" method="POST"   autocomplete="off">
+          <div class="row"> 
+            <div class="input-field col s6"> 
+              <input type="text" name="firstName" value="" class="validate" autocomplete="off" />
+              <label for="firstName">نام خانوادگی</label>
+            </div> 
+            <div class="input-field col s6">
+              <input type="text" name="lastName" value="" class="validate" autocomplete="off" />
+              <label for="lastName">نام</label>
+            </div>
           </div>
           <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" name="email" sclass="validate">
-                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="" class="validate" autocomplete="off"/>
+                <label for="email">ایمیل</label>
               </div>
           </div> 
           <div class="row">
               <div class="input-field col s12"> 
-                <input autocomplete="off" id="password" type="password" value="" class="validate">
-                <label for="password">Password</label>
+                <input type="password" name="password" id="password"  value="" class="validate" autocomplete="off" />
+                <label for="password">رمز عبور</label>
               </div>
-          </div>
-          
-          <div class="row">
-              <div class="col s12">
-                This is an inline input field:
-                <div class="input-field inline">
-                  <input id="email" type="email" class="validate">
-                  <label for="email" data-error="ایمیل اشتباه است." data-success="right">Email</label>
-                </div>
-              </div>
-          </div>
-          <input type="submit" />
+          </div> 
+          <!-- this is for reseting the input field, in chrome-->
+          <input type="email" class="validate" style="display: none"> 
+          <!---->
+          <button class="btn-large waves-effect waves-light blue darken-1 left" type="submit" name="action">ثبت
+            <i class="material-icons right">send</i>
+          </button> 
         </form>
       </div>
     </div>
@@ -51,23 +58,6 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="public/images/background3.jpg" alt="Unsplashed background img 3"></div>
+    <div class="parallax"><img src="/public/images/background3.jpg" alt="Unsplashed background img 3"></div>
   </div>
-<% include common/footer.ejs %>
-
-
-    <div class="row" style="margin-bottom:400px;display:none" >
-      <% if(hasError === true){ %>
-        <div class="row">
-          <div class="alert callout" data-closable>
-            <h5>خطلا:</h5> 
-            <% errors.forEach(function(error){ %> 
-            <p> - <%= error %></p>
-            <% }); %>
-            <button class="close-button" aria-label="Dismiss alert" type="button" style="left:17px !important" data-close>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div> 
-        </div>
-      <% } %>
-     </div>
+<% include common/footer.ejs %> 

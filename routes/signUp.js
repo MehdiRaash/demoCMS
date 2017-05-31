@@ -53,7 +53,7 @@ router.post('/submit', urlencodedParser, function (req, res) {
 
   };
 
-function checkPassword(input, errorMsg){
+  function checkPassword(input, errorMsg){
 
     if(typeof input === 'undefined' || input.length === 0){
       errors.push(errorMsg);
@@ -63,10 +63,11 @@ function checkPassword(input, errorMsg){
     }
 
   }; 
+
   checkName(req.body.firstName, 'نام وارد نشده است.');
   checkName(req.body.lastName, 'نام خانوادگی وارد نشده است.');
   checkEmail(req.body.email, 'ایمیل وارد نشده است.');
-  checkPassword(req.body.password, 'رمز عبور به وارد نشده است.');
+  checkPassword(req.body.password, 'رمز عبور وارد نشده است.');
 
   if(errors.length !== 0){
     res.render('signUp', {

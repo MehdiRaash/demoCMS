@@ -11,6 +11,9 @@ var postSchema = Schema({
 });
 var Post = mongoose.model('post', postSchema, 'post'); 
 
+function getPost(){
+    
+}
 module.exports = {
 
 };
