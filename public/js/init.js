@@ -3,8 +3,9 @@
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
- 
-           
+    Materialize.updateTextFields();
+
+
     setTimeout(function(){
       $('input').val('');
       $('label').removeClass('active');

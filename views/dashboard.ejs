@@ -9,16 +9,58 @@
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2> 
             <h5 class="center">پست های ارسالی</h5>
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <p class="light"></p>
           </div>
+          
         </div>
 
         <div class="col s12 m8">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">افزودن پست جدید</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+          <h5 class="center">افزودن پست جدید</h5>
+          <div class="section">
+            <form action="dashboard/new_post" method="POST" id="post_form">
+            <div class="row">
+              <div class="input-field col s10 m8 right">
+                <input id="post_title" type="text" class="validate required" name="post_title" data-length="40">
+                <label for="post_title">عنوان پست</label>
+              </div>
+              <div class="input-field col s2 m4 left">
+                <div class="switch">
+                  <label>
+                   ثبت و انتشار
+                    <input type="checkbox" id="allowToPublish" name="allowToPublish">
+                    <span class="lever"></span>
+                  فقط ثبت 
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row"> 
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" name="post_text"></textarea>
+                    <label for="textarea1">متن پست</label>
+                  </div>
+                </div> 
+            </div>
+            <div class="row">
+              <div class="col s12 m9"> 
+                 <div class="input-field" id="selectedTags"></div>
+              </div>
+              <div class="col s12 m3">
+                <div class="row">
+                  <div class="input-field col s12 right" style="direction:ltr;">
+                    <i class="material-icons prefix">textsms</i>
+                    <input type="text" id="autocomplete-input" class="autocomplete">
+                    <label for="autocomplete-input">تگ</label>
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="row">
+              <button class="waves-effect waves-light btn green darken-1" id="login_link">انتشار</button>
+            </div>
+            </form>
           </div>
         </div> 
       </div>
