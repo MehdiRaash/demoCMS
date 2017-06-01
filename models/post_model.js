@@ -1,19 +1,25 @@
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/demoCMS');
+var mongoose = require('mongoose'); 
 var db = mongoose.connection;
- 
+
+
 var Schema = mongoose.Schema;
+
 var postSchema = Schema({
     title: String,
     text: String,  
     createdAt: Date,
-    whoCreated: Schema.ObjectId
+    whoCreated_Id: Schema.Types.ObjectId,
+    allowToshow: Boolean,
+    tags: [ Number ]
 });
+
 var Post = mongoose.model('post', postSchema, 'post'); 
 
-function getPost(){
-    
+function insert_post( dataObj, callback ){
+
+    var newPost = new Post(dataObj);
+    newPost.save(callback);
 }
 module.exports = {
-
+    insert_post: insert_post
 };

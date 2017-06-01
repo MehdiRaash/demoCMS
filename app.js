@@ -14,10 +14,12 @@ app.use(session({
     resave: true,
     store: new MemoryStore(),
     saveUninitialized: true,
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
     cookie: {
         httpOnly: false, 
         secure: false, 
-        maxAge: 3600000
+        maxAge: 3600 * 60
     }
 }));
 

@@ -26,6 +26,7 @@ router.post('/', urlencodedParser, function (req, res) {
       sess.user_email = user.email; 
       sess.firstName = user.firstName;
       sess.lastName = user.lastName; 
+      sess.user_id = user._id;
       sess.save(); 
       
       res.redirect('/dashboard'); 
