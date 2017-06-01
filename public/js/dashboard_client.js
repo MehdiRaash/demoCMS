@@ -1,11 +1,11 @@
 (function($){
-  $(function(){
+  $(function(){ 
+     
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
     
-    $("#allowToPublish").prop('checked', true) ;
-
+      
     $('input.autocomplete').autocomplete({
       data: {
         "ورزشی": null, 
@@ -26,25 +26,28 @@
     });
 
     $("#post_form").on('submit' , function( event ) {
-  
+      event.preventDefault();
        
       if ( $( ".required" ).val().length === 0 ) {  
-        event.preventDefault();
-      } else { 
-        event.preventDefault();
+        
+        //show a message
+      } else {  
+
+        
+        var data = $("form#post_form").serializeArray();   
 
         var ajax = $.ajax({
           method: "POST",
           url: "dashboard/new_post",
           dataType: "json",
-          data: { data: [{ name: "John"},{ name: "John"}] }
+          contentType: "application/json;charset=utf-8",  
+          data: JSON.stringify(data) 
         })
 
         ajax.done(function( msg ) {
-            console.log( "Data Saved: " + msg );
+            console.log( msg );
         }); 
 
-        event.preventDefault();
       }
     });
 

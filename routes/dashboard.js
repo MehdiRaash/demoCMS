@@ -5,6 +5,7 @@ var config = require('../config');
 var post_model = require('../models/post_model');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var jsonParser = bodyParser.json();
 
 var router = express.Router();
  
@@ -12,8 +13,7 @@ router.get('/', function (req, res) {
   var sess = req.session;
 
   if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
-    res.redirect('/');
-    res.sendStatus(404);
+    res.redirect('/');  
 
   }else{
 
@@ -29,30 +29,54 @@ router.get('/', function (req, res) {
 
 });  
 
-router.post('/new_post', urlencodedParser, function(req, res){
-  var sess = req.session; 
+router.post('/new_post', jsonParser, function(req, res){
+  var sess = req.session;   
+   
   if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
-    res.redirect('/');
+    //res.redirect('/');
     res.sendStatus(404); 
-  }else{     
+  }else{        
+    console.log(req.body)
+      if(req.body.length !== 0){
 
-    
-    if(req.body.post_text && req.body.post_title){
+      var temp = {
+          allowToPublish : false,
+          post_title: '',
+          post_text: ''
+        };
+
+      req.body.forEach(function(element) {
+
+          switch (element.name) {
+            case 'post_title':
+              temp.post_title = element.value;
+              break;
+            case 'post_text':
+              temp.post_text = element.value.replace(/(?:\r\n|\r|\n)/g, '<br />');
+              break;
+            case 'allowToPublish':
+              temp.allowToPublish = true;
+              break;
+
+            default:
+              break;
+          }
+
+        }, this); 
 
       var dataObj = {
-      title: req.body.post_title,
-      text: req.body.post_text.replace(/(?:\r\n|\r|\n)/g, '<br />'),
+      title: temp.post_title,
+      text: temp.post_text,
       createdAt : Date.now(),
       whoCreated_Id : sess.user_id,
-      allowToshow : true,
+      allowToshow : temp.allowToPublish,
       tags : [3,4]
-    };
-
-    // post_model.insert_post( dataObj, function(){ 
-    //   res.sendStatus(200);
-    // });
+    }; 
+    post_model.insert_post( dataObj, function(){ 
+      res.json({ state: 1, msg: 'پست ارسال شد.'});
+    });
     }else{
-      res.sendStatus(404);
+     // res.sendStatus(404);
     } 
  
    }
