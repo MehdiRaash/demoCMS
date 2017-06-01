@@ -18,8 +18,12 @@ var Post = mongoose.model('post', postSchema, 'post');
 function insert_post( dataObj, callback ){
 
     var newPost = new Post(dataObj);
-    newPost.save(callback);
+    newPost.save(function (err) {
+    if (err) return handleError(err);
+      callback();
+    });
 }
+
 module.exports = {
     insert_post: insert_post
 };

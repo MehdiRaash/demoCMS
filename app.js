@@ -13,13 +13,11 @@ app.use(session({
     secret: "1234567890QWERTY",
     resave: true,
     store: new MemoryStore(),
-    saveUninitialized: true,
-    duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000,
+    saveUninitialized: true, 
     cookie: {
         httpOnly: false, 
         secure: false, 
-        maxAge: 3600 * 60
+        maxAge: 3600 * 24
     }
 }));
 

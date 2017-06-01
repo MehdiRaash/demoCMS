@@ -26,10 +26,7 @@ router.get('/', function (req, res) {
 
   }
 
-}); 
-router.get('/test', function(req, res){
-  res.sendStatus(200);
-});
+});  
 
 router.get('/new_post', function(req, res){
   var sess = req.session;   
