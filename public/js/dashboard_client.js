@@ -5,21 +5,19 @@
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
     
-      
+
     $('input.autocomplete').autocomplete({
-      data: [{
-          tag: 'Apple',
-        }, {
-          tag: 'Microsoft',
-        }, {
-          tag: 'Google',
-      }], 
+      data: {
+        "ورزشی": null, 
+        "اجتمائی": null 
+      },
       limit: 15, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) { 
          
        var selectedTags = $("#selectedTags");
         
-       var tag = $('<div class="chip" data-tagId="2" >' + val + '<i class="close material-icons">close</i></div>');
+      
+       var tag = $('<div class="chip" data-tagName=' + val + ' >' + val + '<i class="close material-icons">close</i></div>');
        selectedTags.append(tag);
 
 
@@ -43,7 +41,8 @@
         var getTheTags = function(){
           var arr = [];
           $("#selectedTags").children('.chip').each(function(){
-            arr.push( $(this).data('tagId') );
+            console.log($(this).data('tagname'));
+            arr.push( $(this).data('tagname') );
           });
           return {
             name: 'tags',
