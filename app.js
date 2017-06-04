@@ -3,6 +3,8 @@ var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
+var config = require('./config');
+
 app.set("view engine", "ejs"); 
 app.set('trust proxy', 1); // trust first proxy
 app.use(cookieParser());
@@ -44,7 +46,7 @@ app.use('/logout', logOut);
 //     next();
 // });
   
-var port  = process.env.PORT || 3000;
+var port  = process.env.PORT || config.port;
 app.listen(port, function(){  
     console.log('server starts!');
 });
