@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
 
   if(typeof sess.loggedIn === 'undefined' || sess.loggedIn === false){
     
-    res.render('signUp', { loggedIn: false, site_name: config.site_name, hasError:false}); 
+    res.render('signUp', { loggedIn: false, site_name: config.site_name, hasError: false}); 
 
   } else{
 

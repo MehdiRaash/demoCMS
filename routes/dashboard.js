@@ -28,7 +28,10 @@ router.get('/', function (req, res) {
   }
 
 });  
-
+router.get('/rr', function(req, res){
+  post_model.show_last_post();
+  res.sendStatus(200)
+})
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
    
@@ -36,15 +39,15 @@ router.post('/new_post', jsonParser, function(req, res){
     //res.redirect('/');
     res.sendStatus(404); 
   }else{        
-    console.log(req.body)
+    
       if(req.body.length !== 0){
 
       var temp = {
           allowToPublish : false,
           post_title: '',
           post_text: ''
-        };
-
+        }; 
+        
       req.body.forEach(function(element) {
 
           switch (element.name) {
@@ -65,16 +68,19 @@ router.post('/new_post', jsonParser, function(req, res){
         }, this); 
 
       var dataObj = {
-      title: temp.post_title,
-      text: temp.post_text,
-      createdAt : Date.now(),
-      whoCreated_Id : sess.user_id,
-      allowToshow : temp.allowToPublish,
-      tags : [3,4]
-    }; 
+        title: temp.post_title,
+        text: temp.post_text,
+        createdAt : Date.now(),
+        whoCreated_Id : sess.user_id,
+        allowToshow : temp.allowToPublish,
+        tags : [ "sport" ]
+      }; 
+      
+
     post_model.insert_post( dataObj, function(){ 
       res.json({ state: 1, msg: 'پست ارسال شد.'});
     });
+
     }else{
      // res.sendStatus(404);
     } 

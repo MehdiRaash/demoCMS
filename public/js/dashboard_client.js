@@ -13,8 +13,9 @@
       },
       limit: 15, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) { 
-        
+         
        var selectedTags = $("#selectedTags");
+        
        var tag = $('<div class="chip">' + val + '<i class="close material-icons">close</i></div>');
        selectedTags.append(tag);
 
@@ -35,17 +36,19 @@
 
         
         var data = $("form#post_form").serializeArray();   
-
+         console.log(data);
         var ajax = $.ajax({
           method: "POST",
           url: "dashboard/new_post",
           dataType: "json",
           contentType: "application/json;charset=utf-8",  
           data: JSON.stringify(data) 
-        })
+        });
 
-        ajax.done(function( msg ) {
-            console.log( msg );
+        ajax.done(function( res ) {
+            if(res.state === 1){
+              console.log('data ersal shod')
+            }
         }); 
 
       }

@@ -22,8 +22,24 @@ function insert_post( dataObj, callback ){
     if (err) return handleError(err);
       callback();
     });
-}
+};
 
+function show_last_post( by ){
+    
+    Post.aggregate(
+        [ 
+            // Sorting pipeline
+            { "$sort": { "createdAt": -1 } },
+            // Optionally limit results
+            { "$limit": 1 }
+        ],
+        function(err,result) {
+            console.log(result)
+        // Result is an array of documents
+        }
+    );
+};
 module.exports = {
-    insert_post: insert_post
+    insert_post: insert_post,
+    show_last_post: show_last_post
 };
