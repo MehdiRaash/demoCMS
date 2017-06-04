@@ -10,7 +10,7 @@ var postSchema = Schema({
     createdAt: Date,
     whoCreated_Id: Schema.Types.ObjectId,
     allowToshow: Boolean,
-    tags: [ String ]
+    tags: [ Schema.Types.ObjectId ]
 });
 
 var Post = mongoose.model('post', postSchema, 'post'); 

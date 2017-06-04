@@ -7,16 +7,19 @@
     
       
     $('input.autocomplete').autocomplete({
-      data: {
-        "ورزشی": null, 
-        "اجتمائی": null 
-      },
+      data: [{
+          tag: 'Apple',
+        }, {
+          tag: 'Microsoft',
+        }, {
+          tag: 'Google',
+      }], 
       limit: 15, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) { 
          
        var selectedTags = $("#selectedTags");
         
-       var tag = $('<div class="chip">' + val + '<i class="close material-icons">close</i></div>');
+       var tag = $('<div class="chip" data-tagId="2" >' + val + '<i class="close material-icons">close</i></div>');
        selectedTags.append(tag);
 
 
@@ -36,7 +39,22 @@
 
         
         var data = $("form#post_form").serializeArray();   
-         console.log(data);
+
+        var getTheTags = function(){
+          var arr = [];
+          $("#selectedTags").children('.chip').each(function(){
+            arr.push( $(this).data('tagId') );
+          });
+          return {
+            name: 'tags',
+            value: arr
+          };
+        };
+        
+         
+        data = data.concat(getTheTags());
+        
+
         var ajax = $.ajax({
           method: "POST",
           url: "dashboard/new_post",
