@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
 
   if(typeof sess.loggedIn === 'undefined' || sess.loggedIn === false){
     
-    res.render('signUp', { loggedIn: false, site_name: config.site_name, hasError: false}); 
+    res.render('signUp', { loggedIn: false, config: config, hasError: false}); 
 
   } else{
 
@@ -72,7 +72,7 @@ router.post('/submit', urlencodedParser, function (req, res) {
   if(errors.length !== 0){
     res.render('signUp', {
       title: 'دمو سی ام اس | ثبت نام',
-      site_name: config.site_name,
+      config: config,
       errors: errors,
       hasError: true 
     });
@@ -82,7 +82,7 @@ router.post('/submit', urlencodedParser, function (req, res) {
 
       res.render('signUp_successful', {
         title: 'دمو سی ام اس | ثبت نام',
-        site_name: config.site_name
+        config: config
       });
     
     });

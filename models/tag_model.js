@@ -15,9 +15,15 @@ var tagSchema = Schema({
 
 var Tag = mongoose.model('tag', tagSchema, 'tag'); 
 
-function getAllTags(arg, callback){
+function getAlltags(arg, callback){
+  Tag.find({},function(err, tags){ 
+    callback(tags);
+  });
+};
 
-  Tag.find({}, function(tags){
+function getAllTagsName(arg, callback){ 
+  Tag.find({}, { name: 1, _id: 0 } ,function(err, tags){ 
+    console.log(tags)
     callback(tags);
   });
 };
@@ -32,7 +38,8 @@ function ifTagExists(tagNamesArr,callback){
     'name': 1 
   })
   .exec(function(err, res){
-    if(res.length !== 0 ){ 
+    if(res.length !== 0 ){
+      //so the tags exist 
        callback();
     }
   });
@@ -55,6 +62,7 @@ function insertNewTag(dataObj, callback){
 };
 
 module.exports = {
-    insertNewTag: insertNewTag,
-    ifTagExists: ifTagExists
+  getAllTagsName: getAllTagsName,
+  insertNewTag: insertNewTag,
+  ifTagExists: ifTagExists
 };

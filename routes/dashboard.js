@@ -17,19 +17,25 @@ router.get('/', function (req, res) {
     res.redirect('/');  
 
   }else{
+    tag_model.getAllTagsName(null, function(tagsArr){ 
 
-    res.render('dashboard', {
-      loggedIn : true, 
-      jsFile: '/public/js/dashboard_client.js',
-      site_name: config.site_name, 
-      firstName: sess.firstName, 
-      lastName : sess.lastName
-    });
+      var neatTagsArr = tagsArr.map(function(tagObj){
+        return tagObj.name;
+      });
 
+      res.render('dashboard', {
+        loggedIn : true, 
+        jsFile: '/public/js/dashboard_client.js',
+        serverTagsArr : JSON.stringify(neatTagsArr),
+        config: config, 
+        firstName: sess.firstName, 
+        lastName : sess.lastName
+      });
+    });  
   }
 
 });  
-router.get('/rr', function(req, res){
+router.get('/test', function(req, res){
   post_model.show_last_post();
   res.sendStatus(200)
 });
@@ -88,7 +94,7 @@ router.post('/new_post', jsonParser, function(req, res){
         if(temp.tagsArr.length === 0){ 
           justInsertPost(temp);
         }else {
-          tag_model.ifTagExists(temp.tagsArr, function(){
+          tag_model.ifTagExists(temp.tagsArr, function(){ 
             justInsertPost(temp);
           });
         } 

@@ -8,13 +8,13 @@ router.get('/', function (req, res) {
 
   if(typeof sess.loggedIn === 'undefined' || sess.loggedIn === false){
     
-    res.render('homePage', { loggedIn: false, site_name: config.site_name}); 
+    res.render('homePage', { loggedIn: false, config: config}); 
 
   } else{
 
     res.render('homePage', { 
       loggedIn : true,
-      site_name: config.site_name, 
+      config: config, 
       firstName: sess.firstName,
       lastName : sess.lastName
     }); 

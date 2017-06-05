@@ -5,23 +5,41 @@
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
     
+    var data = null; 
 
+    var getTags = function(){
+      var autocompleteData = {};
+      $.each(helperData.serverTagsArr, function(index, value){
+        autocompleteData[value] = null;
+      });
+      return autocompleteData;
+    };  
+ 
     $('input.autocomplete').autocomplete({
-      data: {
-        "ورزشی": null, 
-        "اجتمائی": null 
-      },
+      // data: {
+      //   "ورزشی": null, 
+      //   "اجتمائی": null 
+      // },
+      data: getTags(),
       limit: 15, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) { 
-         
-       var selectedTags = $("#selectedTags");
-        
-      
-       var tag = $('<div class="chip" data-tagname=' + val + ' >' + val + '<i class="close material-icons">close</i></div>');
-       selectedTags.append(tag);
 
+      var ifNotExists = function(val) {
+        var notExist = true;
+        $("#selectedTags").children('.chip').each(function(){
+           if(val === $(this).data('tagname')){
+             notExist = false;
+           }
+        });
+        return notExist;
+      };
+      if(ifNotExists(val)){
+        var selectedTags = $("#selectedTags"); 
+        var tag = $('<div class="chip" data-tagname=' + val + ' >' + val + '<i class="close material-icons">close</i></div>');
+        selectedTags.append(tag);
+      } 
 
-       $('input.autocomplete').val('');
+      $('input.autocomplete').val('');
 
       },
       minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
@@ -33,25 +51,25 @@
       if ( $( ".required" ).val().length === 0 ) {  
         
         //show a message
-      } else {  
-
+      } else {   
         
         var data = $("form#post_form").serializeArray();   
 
-        var getTheTags = function(){
-          var arr = [];
-          $("#selectedTags").children('.chip').each(function(){ 
-            arr.push( $(this).data('tagname') );
+        var getTheTagsObject = function(){
+          var arr = [],
+          tagName = $(this).data('tagname');
+          
+
+          $("#selectedTags").children('.chip').each(function(){   
+              arr.push( tagName ); 
           });
           return {
             name: 'tags',
             value: arr
           };
-        };
-        
+        }; 
          
-        data = data.concat(getTheTags());
-        
+        data = data.concat(getTheTagsObject()); 
 
         var ajax = $.ajax({
           method: "POST",

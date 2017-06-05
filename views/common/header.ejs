@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="<%= config.HTMLdir %>">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title><%= site_name %></title>
+  <title><%= config.siteName %></title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body> 
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo"><%= site_name %></a>
+      <a id="logo-container" href="/" class="brand-logo"><%= config.siteName %></a>
       <ul class="left hide-on-med-and-down">
         <% if(typeof loggedIn === "undefined" || loggedIn === false) {%>
         <li style="max-width: 412px;" >

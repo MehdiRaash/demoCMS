@@ -1,6 +1,6 @@
 module.exports = {
-  site_name: "دمو سی ام اس",
+  siteName: "دمو سی ام اس",
   port: 3000,
-  leftToRight: false,
+  HTMLdir: 'rtl',
   siteLanguage: 'fa' // use en for english
 };

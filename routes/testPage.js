@@ -16,17 +16,17 @@ router.get('/', function (req, res) {
 
 	if(typeof sess.loggedIn === 'undefined' || sess.loggedIn === false){
     
-    res.render('homePage', { loggedIn: false, site_name: config.site_name}); 
+    res.render('homePage', { loggedIn: false, config: config}); 
 
   } else{ 
 
   }
 	
 
-    res.render("test", { name :req.params.name , site_name: config.site_name}); 
+    res.render("test", { name :req.params.name , config: config}); 
 }); 
 router.get('/:id', function (req, res) {
-    res.render("test", { name :req.params.name , site_name: config.site_name}); 
+    res.render("test", { name :req.params.name , config: config}); 
 }); 
 
 router.get('/json', function(req, res){
