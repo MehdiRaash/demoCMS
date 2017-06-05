@@ -56,12 +56,10 @@
         var data = $("form#post_form").serializeArray();   
 
         var getTheTagsObject = function(){
-          var arr = [],
-          tagName = $(this).data('tagname');
-          
+          var arr = [];
 
           $("#selectedTags").children('.chip').each(function(){   
-              arr.push( tagName ); 
+              arr.push( $(this).data('tagname') ); 
           });
           return {
             name: 'tags',

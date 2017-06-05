@@ -36,7 +36,7 @@ router.get('/', function (req, res) {
 
 });  
 router.get('/test', function(req, res){
-  post_model.show_last_post();
+  tag_model.ifTagExists(['سیاسی','ورزشی'], function(){});
   res.sendStatus(200)
 });
 router.post('/new_post', jsonParser, function(req, res){
@@ -68,13 +68,13 @@ router.post('/new_post', jsonParser, function(req, res){
             case 'allowToPublish':
               temp.allowToPublish = true;
               break;
-            case 'tags':
+            case 'tags': 
               temp.tagsArr = theInput.value;
             default:
               break;
           }
 
-        }, this); 
+        }, this);  
 
         var justInsertPost = function(temp){
           var dataObj = {
@@ -94,7 +94,7 @@ router.post('/new_post', jsonParser, function(req, res){
         if(temp.tagsArr.length === 0){ 
           justInsertPost(temp);
         }else {
-          tag_model.ifTagExists(temp.tagsArr, function(){ 
+          tag_model.ifTagExists(temp.tagsArr, function(){  
             justInsertPost(temp);
           });
         } 

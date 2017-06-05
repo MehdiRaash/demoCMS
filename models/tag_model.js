@@ -22,24 +22,23 @@ function getAlltags(arg, callback){
 };
 
 function getAllTagsName(arg, callback){ 
-  Tag.find({}, { name: 1, _id: 0 } ,function(err, tags){ 
-    console.log(tags)
+  Tag.find({}, { name: 1, _id: 0 } ,function(err, tags){  
     callback(tags);
   });
 };
 
-function ifTagExists(tagNamesArr,callback){
-   
+function ifTagExists(tagNamesArr,callback){ 
+
   Tag
   .find({ 
-    name: { $all: tagNamesArr }
+    name: { $in: tagNamesArr }
   },{ 
     '_id': 0,
     'name': 1 
   })
-  .exec(function(err, res){
-    if(res.length !== 0 ){
-      //so the tags exist 
+  .exec(function(err, res){ 
+    if(res.length === tagNamesArr.length){ 
+      //so the tags exist  
        callback();
     }
   });
