@@ -24,22 +24,19 @@ function insert_post( dataObj, callback ){
     });
 };
 
-function show_last_post( by ){
+function getLastPost( by ){
     
-    Post.aggregate(
-        [ 
-            // Sorting pipeline
-            { "$sort": { "createdAt": -1 } },
-            // Optionally limit results
-            { "$limit": 1 }
-        ],
-        function(err,result) {
-            console.log(result)
-        // Result is an array of documents
-        }
-    );
+  Post.find({} ,function(err,result) {
+    console.log(result)
+    // Result is an array of documents
+  });
 };
+function getTheMainPost(){
+  
+};
+
 module.exports = {
-    insert_post: insert_post,
-    show_last_post: show_last_post
+  getTheMainPost: getTheMainPost,
+  insert_post: insert_post,
+  getLastPost: getLastPost
 };

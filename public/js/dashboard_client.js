@@ -4,6 +4,7 @@
 
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
+
     
     var data = null; 
 
@@ -74,14 +75,23 @@
           url: "dashboard/new_post",
           dataType: "json",
           contentType: "application/json;charset=utf-8",  
-          data: JSON.stringify(data) 
+          data: JSON.stringify(data),
+          beforeSend: function(){ 
+            $('#progress').removeClass('hide');
+            $('#publishButton').text('در حال ارسال').addClass('disabled');
+          } 
         });
 
-        ajax.done(function( res ) {
+        ajax.done(function( res ) { 
             if(res.state === 1){
-              console.log('data ersal shod')
+                Materialize.toast('پست شما ارسال شد.', 4000)
             }
-        }); 
+        });  
+
+        ajax.always(function(){
+            $('#progress').addClass('hide');
+            $('#publishButton').text('انتشار').removeClass('disabled');
+        });
 
       }
     });

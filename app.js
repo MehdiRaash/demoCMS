@@ -30,6 +30,7 @@ var dashboard = require('./routes/dashboard');
 var signUp    = require('./routes/signUp');
 var logout    = require('./routes/logout');
 var testPage  = require('./routes/testPage');
+var post    = require('./routes/post'); 
 var logOut    = require('./routes/logOut');
 
 app.use('/public', express.static(__dirname+'/public'));
@@ -40,6 +41,7 @@ app.use('/signup', signUp);
 app.use('/dashboard', dashboard);
 app.use('/logout', logout);
 app.use('/testpage', testPage);
+app.use('/post', post)
 app.use('/logout', logOut);
 // app.use(function(req, res, next){
 //     res.cookie('cookieName', 'cookieValue');
