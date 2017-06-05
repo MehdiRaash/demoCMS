@@ -20,12 +20,28 @@ function getAllTags(arg, callback){
   Tag.find({}, function(tags){
     callback(tags);
   });
-}
+};
+
+function ifTagExists(tagNamesArr,callback){
+   
+  Tag
+  .find({ 
+    name: { $all: tagNamesArr }
+  },{ 
+    '_id': 0,
+    'name': 1 
+  })
+  .exec(function(err, res){
+    if(res.length !== 0 ){ 
+       callback();
+    }
+  });
+};
 
 function insertNewTag(dataObj, callback){
 
   var newTag = new Tag(dataObj);
-console.log(newTag);
+ 
   if(!newTag.createdAt){
     newTag.createdAt = Date.now();
   }
@@ -36,8 +52,9 @@ console.log(newTag);
   newTag.save(function(){
     callback();
   })
-}
+};
 
 module.exports = {
-    insertNewTag: insertNewTag 
+    insertNewTag: insertNewTag,
+    ifTagExists: ifTagExists
 };

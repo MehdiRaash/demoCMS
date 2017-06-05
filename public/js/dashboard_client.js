@@ -17,7 +17,7 @@
        var selectedTags = $("#selectedTags");
         
       
-       var tag = $('<div class="chip" data-tagName=' + val + ' >' + val + '<i class="close material-icons">close</i></div>');
+       var tag = $('<div class="chip" data-tagname=' + val + ' >' + val + '<i class="close material-icons">close</i></div>');
        selectedTags.append(tag);
 
 
@@ -40,8 +40,7 @@
 
         var getTheTags = function(){
           var arr = [];
-          $("#selectedTags").children('.chip').each(function(){
-            console.log($(this).data('tagname'));
+          $("#selectedTags").children('.chip').each(function(){ 
             arr.push( $(this).data('tagname') );
           });
           return {
