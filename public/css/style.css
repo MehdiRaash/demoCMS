@@ -1,3 +1,11 @@
+body {
+  font-family: 'IRANSansWeb(FaNum)';
+}
+
+@font-face {
+  font-family: 'IRANSansWeb(FaNum)';
+  src: url('/public/fonts/woff/IRANSansWeb(FaNum).woff');
+}
 input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
