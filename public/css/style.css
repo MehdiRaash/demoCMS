@@ -1,22 +1,18 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-input:-webkit-autofill, 
-textarea:-webkit-autofill, 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
 select:-webkit-autofill {
   background-color: white !important;
 }
-.demoCMS-input{
+
+.demoCMS-input {
   padding: 0.3rem !important;
-  margin-bottom: 10px !important; 
+  margin-bottom: 10px !important;
 }
-.Inputlabel{
+
+.Inputlabel {
   text-align: center !important;
 }
+
 nav ul a,
 nav .brand-logo {
   color: #444;
@@ -34,13 +30,73 @@ p {
   min-height: 380px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
 
-@media only screen and (max-width : 992px) {
+.parallax-container .section {
+  width: 100%;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+
+/*Start Footer*/
+
+footer.page-footer {
+  margin: 0;
+  background-color: #14103B;
+}
+
+.footBio {
+  text-indent: -1px;
+}
+
+.footHeader {
+  text-indent: 38px;
+}
+
+.connectText {
+  font-size: 1.2rem;
+  position: relative;
+  top: -4px;
+  text-align: center;
+  right: 6px;
+}
+
+.settingLink {
+  font-size: 1.2rem;
+  line-height: 34px;
+}
+
+.footer-copyright {
+  background-color: #F02A71 !important;
+}
+
+.copyRight {
+  text-align: center;
+}
+
+.copyContent {
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.Face {
+  position: 7px;
+  position: relative;
+  top: 5px;
+}
+
+
+/*Media Queries*/
+
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -50,19 +106,8 @@ p {
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
-}
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-  font-size: inherit;
-}
-
-footer.page-footer {
-  margin: 0;
 }
