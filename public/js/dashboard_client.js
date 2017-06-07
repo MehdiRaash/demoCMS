@@ -15,7 +15,7 @@
       });
       return autocompleteData;
     };  
- 
+    
     $('input.autocomplete').autocomplete({
       // data: {
       //   "ورزشی": null, 
@@ -47,8 +47,8 @@
     });
 
     $("#post_form").on('submit' , function( event ) {
-      event.preventDefault();
-       
+      event.preventDefault(); 
+
       if ( $( ".required" ).val().length === 0 ) {  
         
         //show a message
@@ -84,7 +84,8 @@
 
         ajax.done(function( res ) { 
             if(res.state === 1){
-                Materialize.toast('پست شما ارسال شد.', 4000)
+                Materialize.toast('پست شما ارسال شد.', 4000);
+                resetTheForm();
             }
         });  
 
@@ -96,5 +97,9 @@
       }
     });
 
+    function resetTheForm(){
+      $("form#post_form")[0].reset();
+      $("#selectedTags").empty();
+    }
   }); // end of document ready
 })(jQuery); // end of jQuery name space
