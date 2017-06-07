@@ -38,7 +38,10 @@
   </footer>
 
 
-  <!--  Scripts-->
+  <script> 		
+    var helperData = {};		
+    helperData.serverTagsArr = <%- typeof serverTagsArr !== 'undefined' ? serverTagsArr : 'null'; %> ; 		
+  </script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/public/js/materialize.js"></script>
   <script src="/public/js/init.js"></script>
