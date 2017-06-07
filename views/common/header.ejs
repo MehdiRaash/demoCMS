@@ -13,26 +13,26 @@
   <script src="https://use.fontawesome.com/b2bea91ec5.js"></script>
 </head>
 <body> 
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
+  <nav class="myNav" role="navigation">
+    <div class="nav-wrapper navWrapp">
       <a id="logo-container" href="/" class="brand-logo"><%= config.siteName %></a>
       <ul class="left hide-on-med-and-down">
         <% if(typeof loggedIn === "undefined" || loggedIn === false) {%>
-        <li style="max-width: 412px;" >
+        <li>
           <form action="/login" method="POST" id="loginFrom">
           <div class="row" style="margin:0 !important">
-            <div class="input-field col s4">
-              <input style="color:darkslategrey"   id="email" name="email" type="text" class="demoCMS-input validate">
+            <div class="input-field col s5 right">
+              <input id="email" name="email" type="text" class="demoCMS-input validate">
               <label for="email" class="Inputlabel">ایمیل</label>
             </div> 
-            <div class="input-field col s4">
-              <input style="color:darkslategrey"   id="password" name="password" type="password" class="demoCMS-input validate">
+            <div class="input-field col s5 right">
+              <input id="password" name="password" type="password" class="demoCMS-input validate">
               <label for="password" class="Inputlabel">رمز عبور</label>
             </div>
-            <div class="col s4">
-              <button class="waves-effect waves-light btn blue darken-1" id="login_link">ورود</button>
+            <div class="col s2">
+              <button class="waves-effect waves-light btn btnLogin" id="login_link">ورود</button>
             </div>
-          </div>
+            </div>
           </form> 
         </li>
         <% }else if(typeof firstName !== "undefined" && typeof lastName !== "undefined"){ %>

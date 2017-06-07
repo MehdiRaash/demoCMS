@@ -6,25 +6,6 @@ body {
   font-family: 'IRANSansWeb(FaNum)';
   src: url('/public/fonts/woff/IRANSansWeb(FaNum).woff');
 }
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  background-color: white !important;
-}
-
-.demoCMS-input {
-  padding: 0.3rem !important;
-  margin-bottom: 10px !important;
-}
-
-.Inputlabel {
-  text-align: center !important;
-}
-
-nav ul a,
-nav .brand-logo {
-  color: #444;
-}
 
 p {
   line-height: 2rem;
@@ -54,14 +35,75 @@ p {
 }
 
 
-/*Start Footer*/
+/*Nav*/
+
+.myNav {
+  background-color: #231b64;
+}
+
+.navWrapp {
+  width: 95% !important;
+  margin: 0 auto !important;
+}
+
+.demoCMS-input {
+  padding: 0.3rem !important;
+  margin-bottom: 10px !important;
+  direction: ltr;
+  text-indent: 20px;
+  background-color: white !important;
+  color: #14103B;
+}
+
+.Inputlabel {
+  text-align: center !important;
+}
+
+.btnLogin {
+  background-color: #35D8B3;
+  width: 100%;
+}
+
+.btnlogin:hover {
+  background-color: #231b64;
+  box-shadow: none;
+  color: #35D8B3;
+}
+
+
+/*Main*/
+
+.mainTxt {
+  text-align: justify;
+}
+
+.mainHeader {
+  font-weight: bolder;
+  color: #231b64;
+}
+
+.mainIcon {
+  color: #1c1650;
+}
+
+.contactHeader {
+  font-weight: bolder;
+  color: #231b64;
+}
+
+.contactTxt {
+  padding: 0 30px;
+}
+
+
+/*Footer*/
 
 footer.page-footer {
   margin: 0;
   background-color: #14103B;
 }
 
-.footBio {
+.companyBio {
   text-indent: -1px;
 }
 
@@ -83,7 +125,7 @@ footer.page-footer {
 }
 
 .footer-copyright {
-  background-color: #F02A71 !important;
+  background: linear-gradient(45deg, #64AFC0 0, #35D8B3 100%);
 }
 
 .copyRight {
