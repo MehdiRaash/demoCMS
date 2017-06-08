@@ -1,0 +1,9 @@
+{
+  "siteName": "دمو سی ام اس",
+  "port": 3000,
+  "db": {
+    "connectionString": "mongodb://localhost/demoCMS"
+  },
+  "HTMLdir": "rtl",
+  "siteLanguage": "fa" 
+}

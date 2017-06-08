@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser'); 
-var config = require('../config'); 
+var config = require('../config/index.json'); 
 
 var user_model = require('../models/post_model');
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var config = require('../config'); 
+var config = require('../config/index.json'); 
 
 var signUp_model = require('../models/user_model');
 

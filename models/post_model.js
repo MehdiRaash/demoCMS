@@ -9,7 +9,8 @@ var postSchema = Schema({
     text: String,  
     createdAt: Date,
     whoCreated_Id: Schema.Types.ObjectId,
-    allowToshow: Boolean,
+    allowToShow: Boolean,
+    mainPost: Boolean,
     tags: [ String ]
 });
 
@@ -31,11 +32,34 @@ function getLastPost( by ){
     // Result is an array of documents
   });
 };
+
 function getTheMainPost(){
-  
+  return new Promise(function(resolve, reject){ 
+    Post.findOne({ } ,function(err,result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+  });
+};
+
+function getLastPostsByTag(tagName, limit){  
+
+  return new Promise(function(resolve, reject){ 
+      Post
+      .find({ tags : { $in: ['سیاسی'] } , allowToShow : true }, { _id: 0 })
+      .sort( { createdAt: 1 } )
+      .limit(limit || 1)
+      .exec(function(err,result) {
+        if (err) reject(err);
+
+        resolve(result);
+      });
+  });
 };
 
 module.exports = {
+  getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
   getLastPost: getLastPost

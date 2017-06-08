@@ -3,7 +3,17 @@ var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
-var config = require('./config');
+var mongoose = require('mongoose');
+var config = require('./config/index.json');
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.db.connectionString);
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('mongoDB is opened.')
+});
 
 app.set("view engine", "ejs"); 
 app.set('trust proxy', 1); // trust first proxy

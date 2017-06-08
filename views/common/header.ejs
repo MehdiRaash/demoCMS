@@ -17,7 +17,7 @@
     <div class="nav-wrapper navWrapp">
       <a id="logo-container" href="/" class="brand-logo"><%= config.siteName %></a>
       <ul class="left hide-on-med-and-down">
-        <% if(typeof loggedIn === "undefined" || loggedIn === false) {%>
+        <% if(loggedIn === false) {%>
         <li>
           <form action="/login" method="POST" id="loginFrom">
           <div class="row" style="margin:0 !important">
@@ -35,11 +35,11 @@
             </div>
           </form> 
         </li>
-        <% }else if(typeof firstName !== "undefined" && typeof lastName !== "undefined"){ %>
+        <% }else if(loggedIn === true){ %>
         <li>
           <div class="chip">
             <img src="public/images/user_images/user.jpg" alt="Contact Person">
-            <%= firstName + ' ' + lastName %>
+            <%= printName() %>
           </div>
         </li>
         <li>

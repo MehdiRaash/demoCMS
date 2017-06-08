@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var config = require('../config'); 
+var config = require('../config/index.json'); 
 
 var tag_model = require('../models/tag_model');
 var post_model = require('../models/post_model');
@@ -28,8 +28,9 @@ router.get('/', function (req, res) {
         jsFile: '/public/js/dashboard_client.js',
         serverTagsArr : JSON.stringify(neatTagsArr),
         config: config, 
-        firstName: sess.firstName, 
-        lastName : sess.lastName
+        printName: function() {
+           return sess.firstName + ' ' + sess.lastName;
+        }
       });
     });  
   }
@@ -78,12 +79,12 @@ router.post('/new_post', jsonParser, function(req, res){
 
         var justInsertPost = function(temp){
           var dataObj = {
-                title: temp.post_title,
-                text: temp.post_text,
-                createdAt : Date.now(),
-                whoCreated_Id : sess.user_id,
-                allowToshow : temp.allowToPublish,
-                tags : temp.tagsArr
+            title: temp.post_title,
+            text: temp.post_text,
+            createdAt : Date.now(),
+            whoCreated_Id : sess.user_id,
+            allowToShow : temp.allowToPublish,
+            tags : temp.tagsArr
           };  
 
           post_model.insert_post( dataObj, function(){ 
