@@ -21,6 +21,11 @@ router.get('/', function (req, res) {
     }
   } 
  
+  // var myPreferedTag = {
+  //   sport : { fa: 'ورزشی'},
+  //   politic : { fa: 'سیاسی'},
+  //   social : { fa: 'اجتمائی' }
+  // };
 
   Promise.all([ 
     post_model.getTheMainPost(),
@@ -28,18 +33,14 @@ router.get('/', function (req, res) {
     post_model.getLastPostsByTag('سیاسی', 2),
     post_model.getLastPostsByTag('اجتمائی', 2),
     ])
-    .then(function(result){
+    .then(function(result){ 
 
-      var mainPost = result[0];
-      var sport    = result[1];
-      var politic  = result[2];
-      var social   = result[3];
+      renderObj.mainPost = result[0];
+      renderObj.sports   = result[1];
+      renderObj.politic  = result[2];
+      renderObj.social   = result[3];
 
-      renderObj.mainPost = mainPost;
-      renderObj.sports   = sport;
-      renderObj.politic  = politic;
-      renderObj.social   = social;
-
+      console.log(renderObj);
 
       res.render('homePage', renderObj); 
 

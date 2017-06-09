@@ -47,7 +47,7 @@ function getLastPostsByTag(tagName, limit){
 
   return new Promise(function(resolve, reject){ 
       Post
-      .find({ tags : { $in: ['سیاسی'] } , allowToShow : true }, { _id: 0 })
+      .find({ tags : { $in: ['سیاسی'] } , allowToShow : true }, { })
       .sort( { createdAt: 1 } )
       .limit(limit || 1)
       .exec(function(err,result) {
