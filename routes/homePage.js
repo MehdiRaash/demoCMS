@@ -1,5 +1,6 @@
 var express = require('express');
-var config  = require('../config/index.json');
+var config  = require('../config/index.json'); 
+
 var router = express.Router();
 
 var post_model = require('../models/post_model');
@@ -28,21 +29,84 @@ router.get('/', function (req, res) {
   // };
 
   Promise.all([ 
-    post_model.getTheMainPost()
-    //,
-    //post_model.getLastPostsByTag('ورزشی', 2),
-    //post_model.getLastPostsByTag('سیاسی', 2),
-    //post_model.getLastPostsByTag('اجتمائی', 2),
+    post_model.getTheMainPost(),
+    post_model.getLastPostsByTag('ورزشی', 2),
+    post_model.getLastPostsByTag('سیاسی', 2),
+    post_model.getLastPostsByTag('اجتمائی', 2) 
     ])
     .then(function(result){ 
 
-      renderObj.mainPost = result[0];
-     // renderObj.sports   = result[1];
-     // renderObj.politic  = result[2];
-   //   renderObj.social   = result[3];
+    //   var postManager = {
+    //     allPostId : [],
+    //     addId : function(arr){ 
+    //       arr.forEach(function(eachPost){ 
+    //         this.allPostId.push( eachPost['_id'].toString() ); 
+    //       }, this); 
+    //     },
+    //     removeId: function(id){
+    //       this.allPostId = this.allPostId.filter(function(eachId){
+    //         if(eachId === id){
+    //           return false
+    //         }else{
+    //           return true;
+    //         }
+    //       } ,this);
+    //     },
+    //     removeDuplicate: function(arr){  
+    //     var newArr = arr.filter(function(obj){  
+    //       if(this.allPostId.indexOf(obj['_id'].toString()) !== -1){ 
+    //         this.removeId(obj['_id'].toString());
+    //         return true;
+    //       }else{
+    //         return false;
+    //       }
+    //     }, this); 
+    //     return newArr;
+    //   }
 
-      console.log(renderObj);
+    // }; 
+    // postManager.addId(result[1]);
+    // postManager.addId(result[2]);
+    // postManager.addId(result[3]);
 
+
+      var allPostId = [];
+      var gatherAllPostId = function(arr){
+        arr.forEach(function(eachPost){ 
+          allPostId.push(eachPost['_id'].toString()); 
+        })  
+      }; 
+      var removeId  = function(id){
+        allPostId = allPostId.filter(function(eachId){
+          if(eachId === id){
+            return false
+          }else{
+            return true;
+          }
+        });
+      }; 
+      var removeDuplicate = function(arr){  
+        var newArr = arr.filter(function(obj){  
+          if(allPostId.indexOf(obj['_id'].toString()) !== -1){ 
+            removeId(obj['_id'].toString());
+            return true;
+          }else{
+            return false;
+          }
+        }); 
+        return newArr;
+      }; 
+
+      gatherAllPostId(result[1]);
+      gatherAllPostId(result[2]);
+      gatherAllPostId(result[3]); 
+
+      renderObj.mainPost = { title: "خبر اصلی", posts: result[0] };
+      renderObj.sport    = { title: "ورزشی", posts: removeDuplicate(result[1]) };
+      renderObj.politic  = { title: "سیاسی", posts: removeDuplicate(result[2]) };
+      renderObj.social   = { title: "اجتمائی", posts: removeDuplicate(result[3]) };
+       
+ 
       res.render('homePage', renderObj); 
 
   });

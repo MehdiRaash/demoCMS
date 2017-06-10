@@ -51,7 +51,7 @@ router.post('/new_post', jsonParser, function(req, res){
       if(req.body.length !== 0){
 
       var temp = {
-          allowToPublish : false,
+          allowToShow : false,
           post_title: '',
           post_text: '',
           tagsArr: []
@@ -67,7 +67,7 @@ router.post('/new_post', jsonParser, function(req, res){
               temp.post_text = theInput.value.replace(/(?:\r\n|\r|\n)/g, '<br />');
               break;
             case 'allowToPublish':
-              temp.allowToPublish = true;
+              temp.allowToShow = true;
               break;
             case 'tags': 
               temp.tagsArr = theInput.value;
@@ -83,7 +83,7 @@ router.post('/new_post', jsonParser, function(req, res){
             text: temp.post_text,
             createdAt : Date.now(),
             whoCreated_Id : sess.user_id,
-            allowToShow : temp.allowToPublish,
+            allowToShow : temp.allowToShow,
             tags : temp.tagsArr
           };  
 

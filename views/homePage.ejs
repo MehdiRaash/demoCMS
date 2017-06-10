@@ -24,31 +24,53 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">flash_on</i></h2>
-            <h5 class="center mainHeader">توسعه را سرعت می بخشد</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
+          <% if(sport.posts.length !== 0){ %> 
+            <div class="section">
+              <h5 class="center mainHeader"><%= sport.title %></h5>
+            </div>
+            <% sport.posts.forEach(function(eachPost){ %> 
+            <div class="icon-block">   
+              <h5 class="mainHeader"><%= eachPost.title %></h5>
+              <p class="mainTxt light"><%- eachPost.text %></p>
+            </div> 
+            <% }); %>
+          <% } else{ %>
+           <p class="">فاقد خبر <%= sport.title %></p>
+          <% } %>
         </div>
 
         <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">group</i></h2>
-            <h5 class="center mainHeader">با محوریت تجربه کاربری</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
+          <% if(social.posts.length !== 0){ %> 
+            <div class="section">
+              <h5 class="center mainHeader"><%= social.title %></h5>
+            </div>
+            <% social.posts.forEach(function(eachPost){ %> 
+            <div class="icon-block">   
+              <h5 class="mainHeader"><%= eachPost.title %></h5>
+              <p class="mainTxt light"><%= eachPost.text %></p>
+            </div> 
+            <% }); %>
+          <% } else{ %>
+           <p>فاقد خبر <%= social.title %></p>
+          <% } %>
         </div>
 
         <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">settings</i></h2>
-            <h5 class="center mainHeader">کاربرد آسان</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
+          <% if(politic.posts.length !== 0){ %> 
+            <div class="section">
+              <h5 class="center mainHeader"><%= politic.title %></h5>
+            </div>
+            <% politic.posts.forEach(function(eachPost){ %> 
+            <div class="icon-block">   
+              <h5 class="mainHeader"><%= eachPost.title %></h5>
+              <p class="mainTxt light"><%- eachPost.text %></p>
+            </div> 
+            <% }); %>
+          <% } else{ %>
+           <p>فاقد خبر <%= politic.title %></p>
+          <% } %>
         </div>
+
       </div>
 
     </div>
