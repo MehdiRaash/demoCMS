@@ -30,9 +30,9 @@ router.get('/', function (req, res) {
 
   Promise.all([ 
     post_model.getTheMainPost(),
-    post_model.getLastPostsByTag('ورزشی', 2),
-    post_model.getLastPostsByTag('سیاسی', 2),
-    post_model.getLastPostsByTag('اجتمائی', 2) 
+    post_model.getLastPostsByTag('ورزشی', 4),
+    post_model.getLastPostsByTag('سیاسی', 4),
+    post_model.getLastPostsByTag('اجتمائی', 4) 
     ])
     .then(function(result){ 
 
@@ -71,10 +71,20 @@ router.get('/', function (req, res) {
 
 
       var allPostId = [];
-      var gatherAllPostId = function(arr){
-        arr.forEach(function(eachPost){ 
-          allPostId.push(eachPost['_id'].toString()); 
-        })  
+      var gatherAllPostId = function(mainQueryArr){
+        if(Array.isArray(mainQueryArr)){
+          mainQueryArr.forEach(function(queryResult){
+
+            if(Array.isArray(queryResult)){
+              queryResult.forEach(function(eachPost){ 
+                allPostId.push(eachPost['_id'].toString()); 
+              });
+            }else{
+              allPostId.push(queryResult['_id'].toString());
+            }
+            
+          }); 
+        } 
       }; 
       var removeId  = function(id){
         allPostId = allPostId.filter(function(eachId){
@@ -85,7 +95,12 @@ router.get('/', function (req, res) {
           }
         });
       }; 
-      var removeDuplicate = function(arr){  
+      var removeDuplicate = function(arr){ 
+        if( !Array.isArray(arr) ){
+          var temp = arr;
+          arr = [];
+          arr.push(temp);
+        } 
         var newArr = arr.filter(function(obj){  
           if(allPostId.indexOf(obj['_id'].toString()) !== -1){ 
             removeId(obj['_id'].toString());
@@ -97,11 +112,9 @@ router.get('/', function (req, res) {
         return newArr;
       }; 
 
-      gatherAllPostId(result[1]);
-      gatherAllPostId(result[2]);
-      gatherAllPostId(result[3]); 
+      gatherAllPostId(result);  
 
-      renderObj.mainPost = { title: "خبر اصلی", posts: result[0] };
+      renderObj.mainPost = { title: "خبر اصلی", posts: removeDuplicate(result[0]) };
       renderObj.sport    = { title: "ورزشی", posts: removeDuplicate(result[1]) };
       renderObj.politic  = { title: "سیاسی", posts: removeDuplicate(result[2]) };
       renderObj.social   = { title: "اجتمائی", posts: removeDuplicate(result[3]) };

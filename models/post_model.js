@@ -60,7 +60,20 @@ function getLastPostsByTag(tagName, limit){
   });
 };
 
+function findById(id, callback){
+    return new Promise(function(resolve, reject){ 
+
+    Post.findOne({ _id : id } ,function(err,result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+    
+  });
+};
+
 module.exports = {
+  findById: findById,
   getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
