@@ -13,6 +13,7 @@
       $.each(helperData.serverTagsArr, function(index, value){
         autocompleteData[value] = null;
       });
+       
       return autocompleteData;
     };  
     
@@ -55,7 +56,7 @@
       } else {   
         
         var data = $("form#post_form").serializeArray();   
-
+        
         var getTheTagsObject = function(){
           var arr = [];
 
@@ -69,7 +70,7 @@
         }; 
          
         data = data.concat(getTheTagsObject()); 
-
+        
         var ajax = $.ajax({
           method: "POST",
           url: "dashboard/new_post",
@@ -84,6 +85,7 @@
 
         ajax.done(function( res ) { 
             if(res.state === 1){
+               
                 Materialize.toast('پست شما ارسال شد.', 4000);
                 resetTheForm();
             }

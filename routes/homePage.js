@@ -28,17 +28,18 @@ router.get('/', function (req, res) {
   // };
 
   Promise.all([ 
-    post_model.getTheMainPost(),
-    post_model.getLastPostsByTag('ورزشی', 2),
-    post_model.getLastPostsByTag('سیاسی', 2),
-    post_model.getLastPostsByTag('اجتمائی', 2),
+    post_model.getTheMainPost()
+    //,
+    //post_model.getLastPostsByTag('ورزشی', 2),
+    //post_model.getLastPostsByTag('سیاسی', 2),
+    //post_model.getLastPostsByTag('اجتمائی', 2),
     ])
     .then(function(result){ 
 
       renderObj.mainPost = result[0];
-      renderObj.sports   = result[1];
-      renderObj.politic  = result[2];
-      renderObj.social   = result[3];
+     // renderObj.sports   = result[1];
+     // renderObj.politic  = result[2];
+   //   renderObj.social   = result[3];
 
       console.log(renderObj);
 

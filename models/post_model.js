@@ -35,11 +35,13 @@ function getLastPost( by ){
 
 function getTheMainPost(){
   return new Promise(function(resolve, reject){ 
+
     Post.findOne({ } ,function(err,result) {
       if (err) reject(err);
 
       resolve(result);
     });
+    
   });
 };
 
@@ -47,14 +49,14 @@ function getLastPostsByTag(tagName, limit){
 
   return new Promise(function(resolve, reject){ 
       Post
-      .find({ tags : { $in: ['سیاسی'] } , allowToShow : true }, { })
+      .find({ tags : { $in: [tagName] } , allowToShow : true }, { })
       .sort( { createdAt: 1 } )
-      .limit(limit || 1)
+      .limit(limit)
       .exec(function(err,result) {
         if (err) reject(err);
 
         resolve(result);
-      });
+      }); 
   });
 };
 

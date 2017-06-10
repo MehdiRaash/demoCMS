@@ -12,8 +12,6 @@ var UserSchema = mongoose.Schema({
 var User = mongoose.model('user', UserSchema, 'user'); 
 
 
-
-
 function do_signUp(input, callback){
 
   User.findOne({ email: input.email }, function(err, obj){
