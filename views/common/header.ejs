@@ -9,37 +9,28 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="/public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   
    <!-- Font Awesome CDN -->
   <script src="https://use.fontawesome.com/b2bea91ec5.js"></script>
 </head>
 <body> 
+
   <nav class="myNav" role="navigation">
     <div class="nav-wrapper navWrapp">
       <a id="logo-container" href="/" class="brand-logo"><%= config.siteName %></a>
       <ul class="left hide-on-med-and-down">
-        <% if(typeof loggedIn === "undefined" || loggedIn === false) {%>
+        <% if(loggedIn === false) {%>
         <li>
-          <form action="/login" method="POST" id="loginFrom">
-          <div class="row" style="margin:0 !important">
-            <div class="input-field col s5 right">
-              <input id="email" name="email" type="text" class="demoCMS-input validate">
-              <label for="email" class="Inputlabel">ایمیل</label>
-            </div> 
-            <div class="input-field col s5 right">
-              <input id="password" name="password" type="password" class="demoCMS-input validate">
-              <label for="password" class="Inputlabel">رمز عبور</label>
-            </div>
-            <div class="col s2">
-              <button class="waves-effect waves-light btn btnLogin" id="login_link">ورود</button>
-            </div>
-            </div>
-          </form> 
+                    
+                <a class="waves-effect waves-light btn loginBtn logSign" href="#modal1">ورود</a>
+                 <a class="waves-effect waves-light btn signUpBtn logSign" href=""><span>ثبت نام</span></a>
+            
         </li>
-        <% }else if(typeof firstName !== "undefined" && typeof lastName !== "undefined"){ %>
+        <% }else if(loggedIn === true){ %>
         <li>
           <div class="chip">
             <img src="public/images/user_images/user.jpg" alt="Contact Person">
-            <%= firstName + ' ' + lastName %>
+            <%= printName() %>
           </div>
         </li>
         <li>
@@ -52,4 +43,26 @@
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
+
+    
+    <!-- Modal Structure -->
+  <div id="modal1" class="modal loginModal">
+    <div class="modal-content loginContent">   
+      <form action="/login" method="POST" id="loginFrom" class="form login grid">
+          <div class="row" style="margin:0 !important">
+             <div class="col l12 m12 s12 formField">
+              <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
+            </div>
+            <div class="col l12 m12 s12 formField">
+              <input id="password" name="password" type="password"  placeholder="رمز عبور" class="demoCMS-input">
+           </div>
+           <div class="col l12 m12 s12">
+              <button class="waves-effect waves-light btn loginForm modal-close" id="login_link">ورود</button>
+            </div>
+            </form>
+    </div>
+   </div>
   </nav>
+  
+
+  
