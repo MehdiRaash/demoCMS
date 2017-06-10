@@ -1,5 +1,6 @@
 body {
   font-family: 'IRANSansWeb(FaNum)';
+  overflow: auto !important;
 }
 
 @font-face {
@@ -49,25 +50,36 @@ p {
 .demoCMS-input {
   padding: 0.3rem !important;
   margin-bottom: 10px !important;
-  direction: ltr;
+  /*direction: ltr;*/
   text-indent: 20px;
   background-color: white !important;
   color: #14103B;
 }
 
-.Inputlabel {
-  text-align: center !important;
-}
-
-.btnLogin {
+.logSign {
   background-color: #35D8B3;
-  width: 100%;
+  margin-right: 0px !important;
+  margin-left: 5px !important;
+  margin-top: 0px !important;
+  padding: 0 1rem !important;
 }
 
-.btnlogin:hover {
-  background-color: #231b64;
-  box-shadow: none;
-  color: #35D8B3;
+.loginForm {
+  width: 100%;
+  height: 45px;
+  background: #35D8B3;
+}
+
+input[type=email],
+input[type=password] {
+  box-sizing: border-box !important;
+}
+
+.loginModal {
+  width: 40%;
+  border-radius: 5px !important;
+  /*background-image: url('/public/images/loginbg.jpg') !important;*/
+  /*background: linear-gradient(to bottom, #4131b4 0%, #14103b 100%);*/
 }
 
 
