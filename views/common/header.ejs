@@ -23,7 +23,7 @@
         <li>
                     
                 <a class="waves-effect waves-light btn loginBtn logSign" href="#modal1">ورود</a>
-                 <a class="waves-effect waves-light btn signUpBtn logSign" href=""><span>ثبت نام</span></a>
+                 <a class="waves-effect waves-light btn signUpBtn logSign" href="/signup"><span>ثبت نام</span></a>
             
         </li>
         <% }else if(loggedIn === true){ %>
@@ -49,17 +49,18 @@
   <div id="modal1" class="modal loginModal">
     <div class="modal-content loginContent">   
       <form action="/login" method="POST" id="loginFrom" class="form login grid">
-          <div class="row" style="margin:0 !important">
-             <div class="col l12 m12 s12 formField">
-              <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
-            </div>
-            <div class="col l12 m12 s12 formField">
-              <input id="password" name="password" type="password"  placeholder="رمز عبور" class="demoCMS-input">
-           </div>
-           <div class="col l12 m12 s12">
+        <div class="row" style="margin:0 !important">
+          <div class="col l12 m12 s12 formField">
+            <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12 formField">
+            <input id="password" name="password" type="password"  placeholder="رمز عبور" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12">
               <button class="waves-effect waves-light btn loginForm modal-close" id="login_link">ورود</button>
-            </div>
-            </form>
+          </div>
+        </div>
+      </form>
     </div>
    </div>
   </nav>
