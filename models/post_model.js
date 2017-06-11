@@ -72,8 +72,26 @@ function findById(id, callback){
   });
 };
 
+function findByTag(tagNameArr){
+  return new Promise(function(resolve, reject){ 
+
+    Post.find({ tags : { $in: tagNameArr } , allowToShow : true }).distinct('_id', function(err,result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+
+    Post.find({ tags : { $in: tagNameArr } , allowToShow : true } , function(err,result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+  });
+};
+
 module.exports = {
   findById: findById,
+  findByTag: findByTag,
   getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,

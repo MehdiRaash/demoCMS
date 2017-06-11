@@ -30,6 +30,9 @@ router.get('/:postId/:persianText', function (req, res) {
 
   post_model.findById(req.params.postId) 
   .then(function(result){
+    //return post_model.findByTag(['اجتمائی','سیاسی','ورزشی']);
+ // }).then(function(result){
+    //console.log(result)
     renderObj.post = result;
     res.render('post', renderObj);
   }); 

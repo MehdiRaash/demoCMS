@@ -7,14 +7,31 @@
 
       </div>
     </div>
-    <div class="parallax"><img src="public/images/background1.jpg" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="/public/images/background1.jpg" alt="Unsplashed background img 1"></div>
   </div>
 
 
   <div class="container">
-     <p> 
-       <%- post.text %>
-     </p>
+    <div class="section">
+      <div class="row">  
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
+        </div>
+        <div class="col s12 m8 offset-m1">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class=""><%- post.title %></h5>
+            <br />
+            <p class="light"><%- post.text %></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
