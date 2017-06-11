@@ -32,9 +32,7 @@ router.get('/', function (req, res) {
     post_model.getTheMainPost(),
     post_model.getLastPostsByTag('ورزشی', 4),
     post_model.getLastPostsByTag('سیاسی', 4),
-    post_model.getLastPostsByTag('اجتمائی', 4),
-    post_model.getLastPostsByTag('اجتماdfئی', 4) 
-
+    post_model.getLastPostsByTag('اجتمائی', 4)
     ])
     .then(function(result){  
     //   var postManager = {
@@ -125,7 +123,6 @@ router.get('/', function (req, res) {
       renderObj.sport    = { title: "ورزشی", posts: removeDuplicate(result[1]) };
       renderObj.politic  = { title: "سیاسی", posts: removeDuplicate(result[2]) };
       renderObj.social   = { title: "اجتمائی", posts: removeDuplicate(result[3]) };
-      renderObj.ss   =     { title: "اجتمائی", posts: removeDuplicate(result[4]) };
 
       res.render('homePage', renderObj); 
        
