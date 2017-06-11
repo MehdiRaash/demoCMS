@@ -119,7 +119,7 @@ router.get('/', function (req, res) {
       renderObj.politic  = { title: "سیاسی", posts: removeDuplicate(result[2]) };
       renderObj.social   = { title: "اجتمائی", posts: removeDuplicate(result[3]) };
        
- 
+      console.log(renderObj.mainPost)
       res.render('homePage', renderObj); 
 
   });

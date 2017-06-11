@@ -173,3 +173,7 @@ footer.page-footer {
     top: 0;
   }
 }
+
+.mainPost{
+  background-color: rgba(121, 121, 121, 0.77);
+}
