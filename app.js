@@ -40,7 +40,7 @@ var dashboard = require('./routes/dashboard');
 var signUp    = require('./routes/signUp');
 var logout    = require('./routes/logout');
 var testPage  = require('./routes/testPage');
-var post    = require('./routes/post'); 
+var post      = require('./routes/post'); 
 var logOut    = require('./routes/logOut');
 
 app.use('/public', express.static(__dirname+'/public'));

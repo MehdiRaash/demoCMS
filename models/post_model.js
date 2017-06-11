@@ -38,8 +38,13 @@ function getTheMainPost(){
 
     Post.findOne({ } ,function(err,result) {
       if (err) reject(err);
-
-      resolve(result);
+      var arr = [];
+      if(result === null){
+        resolve(arr);
+      }else{
+        arr.push(result);
+        resolve(arr);
+      } 
     });
     
   });
