@@ -36,8 +36,7 @@ router.get('/', function (req, res) {
     post_model.getLastPostsByTag('اجتماdfئی', 4) 
 
     ])
-    .then(function(result){ 
-       console.log(result)
+    .then(function(result){  
     //   var postManager = {
     //     allPostId : [],
     //     addId : function(arr){ 
@@ -80,13 +79,8 @@ router.get('/', function (req, res) {
             if(Array.isArray(queryResult) && queryResult.length !== 0){
               queryResult.forEach(function(eachPost){  
                 allPostId.push(eachPost['_id'].toString()); 
-              });
+              });  
             }
-            // }else if(typeof queryResult['_id'] !== 'undefined'){
-            //   console.log('dds')
-            //   allPostId.push(queryResult['_id'].toString());
-            // }
-            
           }); 
         } 
       }; 
