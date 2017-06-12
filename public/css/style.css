@@ -47,12 +47,33 @@ p {
   margin: 0 auto !important;
 }
 
+
+/*Login Form*/
+
+input[type=email],
+input[type=password] {
+  box-sizing: border-box !important;
+  height: 4rem;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 30px #fafafa inset;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+}
+
+input[type=text] {
+  border-bottom: 1px solid lightgray;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0px 9999px #fafafa !important;
+  border: 1px solid #26a69a;
+  border-radius: 4px;
+}
+
 .demoCMS-input {
-  padding: 0.3rem !important;
-  margin-bottom: 10px !important;
-  /*direction: ltr;*/
   text-indent: 20px;
-  background-color: white !important;
   color: #14103B;
 }
 
@@ -64,22 +85,46 @@ p {
   padding: 0 1rem !important;
 }
 
-.loginForm {
+.formBtn {
   width: 100%;
-  height: 45px;
-  background: #35D8B3;
+  height: 4rem;
+  background: #00d1b2;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
 }
 
-input[type=email],
-input[type=password] {
-  box-sizing: border-box !important;
+.lockIcon {
+  color: #00d1b2;
+  font-size: 4rem !important;
+}
+
+.loginIcon {
+  text-align: center;
 }
 
 .loginModal {
   width: 40%;
-  border-radius: 5px !important;
-  /*background-image: url('/public/images/loginbg.jpg') !important;*/
-  /*background: linear-gradient(to bottom, #4131b4 0%, #14103b 100%);*/
+  border-radius: 3px !important;
+}
+
+.loginField {
+  padding: 0 3rem !important;
+}
+
+
+/*SingUp Form*/
+
+.signUpModal {
+  border-radius: 3px !important;
+}
+
+.signIcon {
+  text-align: center;
+}
+
+.userIcon {
+  color: #00d1b2;
 }
 
 
@@ -172,4 +217,8 @@ footer.page-footer {
   #index-banner .section {
     top: 0;
   }
+}
+
+.mainPost {
+  background-color: rgba(121, 121, 121, 0.77);
 }
