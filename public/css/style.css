@@ -112,7 +112,9 @@ input:-webkit-autofill:focus {
   padding: 0 3rem !important;
 }
 
-
+.signField {
+  padding: 0 3rem !important;
+}
 /*SingUp Form*/
 
 .signUpModal {
