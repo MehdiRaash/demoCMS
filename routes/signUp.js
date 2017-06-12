@@ -25,7 +25,12 @@ router.get('/', function (req, res) {
 
 router.post('/submit', urlencodedParser, function (req, res) {  
 
-  var errors = [];  
+  var errors = []; 
+  var renderObj = {};
+  
+  renderObj.config = config;
+  renderObj.loggedIn = false; 
+  renderObj.errors = [];
   //we are gonna check if an input is not set
   function checkName(input, errorMsg){
 
@@ -69,21 +74,18 @@ router.post('/submit', urlencodedParser, function (req, res) {
   checkEmail(req.body.email, 'ایمیل وارد نشده است.');
   checkPassword(req.body.password, 'رمز عبور وارد نشده است.');
 
+   
   if(errors.length !== 0){
-    res.render('signUp', {
-      title: 'دمو سی ام اس | ثبت نام',
-      config: config,
-      errors: errors,
-      hasError: true 
-    });
+    renderObj.errors = errors;
+    renderObj.hasError = true;
+    res.render('signUp', renderObj);
   }else{
- 
+    
+    renderObj.hasError = false;
+
     signUp_model.do_signUp(req.body, function(){
 
-      res.render('signUp_successful', {
-        title: 'دمو سی ام اس | ثبت نام',
-        config: config
-      });
+      res.render('signUp_successful', renderObj);
     
     });
   

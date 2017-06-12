@@ -18,7 +18,7 @@ router.get('/', function (req, res) {
   } else{  
     renderObj.loggedIn = true;
     renderObj.printName = function(){
-      return sess.firstName + ' ' + sess.lastName;
+      return sess.lastName + ' ' + sess.firstName;
     }
   } 
  
