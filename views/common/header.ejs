@@ -23,7 +23,11 @@
         <li>
                     
                 <a class="waves-effect waves-light btn loginBtn logSign" href="#modal1">ورود</a>
+<<<<<<< HEAD
                  <a class="waves-effect waves-light btn signUpBtn logSign" href="/signup"><span>ثبت نام</span></a>
+=======
+                 <a class="waves-effect waves-light btn signUpBtn logSign" href="#modal2"><span>ثبت نام</span></a>
+>>>>>>> 323ac33c675f686758af2a55c2828858b8b31d31
             
         </li>
         <% }else if(loggedIn === true){ %>
@@ -45,11 +49,13 @@
     </div>
 
     
-    <!-- Modal Structure -->
+    <!-- Login Modal -->
   <div id="modal1" class="modal loginModal">
-    <div class="modal-content loginContent">   
+    <div class="modal-content modalContent">   
+    <p class="loginIcon"><i class="material-icons lockIcon">lock</i></p>
       <form action="/login" method="POST" id="loginFrom" class="form login grid">
         <div class="row" style="margin:0 !important">
+<<<<<<< HEAD
           <div class="col l12 m12 s12 formField">
             <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
           </div>
@@ -58,6 +64,44 @@
           </div>
           <div class="col l12 m12 s12">
               <button class="waves-effect waves-light btn loginForm modal-close" id="login_link">ورود</button>
+=======
+          <div class="col l12 m12 s12 loginField">
+            <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12 loginField">
+            <input id="password" name="password" type="password"  placeholder="رمز عبور" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12 loginField btnField">
+              <button class="waves-effect waves-light btn formBtn modal-close" id="login_link">ورود</button>
+          </div>
+        </div>
+      </form>
+    </div>
+   </div>
+    <!-- SignUp Modal -->
+    
+  <div id="modal2" class="modal signUpModal">
+    <div class="modal-content modalContent">   
+    <p class="signIcon"><i class="fa fa-user fa-4x userIcon" aria-hidden="true"></i></p>
+     <form action="/signup/submit" method="POST"   autocomplete="off">
+     <div class="row" style="margin:0 !important">
+          <div class="col l6 m6 s6 signField right">
+            <input type="text" name="firstName"  placeholder="نام" class="demoCMS-input">
+          </div>
+          <div class="col l6 m6 s6 signField right">
+            <input type="text" name="lastName"  placeholder="نام خانوادگی" class="demoCMS-input">
+          </div>
+          </div>     
+        <div class="row" style="margin:0 !important">
+          <div class="col l12 m12 s12 signField">
+           <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12 signField">
+            <input type="password" name="password" id="password" placeholder="رمز عبور" class="demoCMS-input">
+          </div>
+          <div class="col l12 m12 s12 signField btnField">
+              <button class="waves-effect waves-light btn modal-close formBtn" type="submit" name="action">ثبت</button>
+>>>>>>> 323ac33c675f686758af2a55c2828858b8b31d31
           </div>
         </div>
       </form>
