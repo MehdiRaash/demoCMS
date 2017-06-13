@@ -50,26 +50,19 @@ p {
 
 /*Login Form*/
 
+input[type=text],
 input[type=email],
 input[type=password] {
   box-sizing: border-box !important;
-  height: 4rem;
+  height: 3rem;
 }
 
 input:-webkit-autofill {
   box-shadow: 0 0 0 30px #fafafa inset;
-  border: 1px solid lightgray;
-  border-radius: 4px;
-}
-
-input[type=text] {
-  border-bottom: 1px solid lightgray;
 }
 
 input:-webkit-autofill:focus {
   box-shadow: inset 0 0 0px 9999px #fafafa !important;
-  border: 1px solid #26a69a;
-  border-radius: 4px;
 }
 
 .demoCMS-input {
@@ -89,44 +82,46 @@ input:-webkit-autofill:focus {
   width: 100%;
   height: 4rem;
   background: #00d1b2;
-  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: bolder;
 }
 
 .lockIcon {
   color: #00d1b2;
-  font-size: 4rem !important;
-}
-
-.loginIcon {
-  text-align: center;
-}
-
-.loginModal {
-  width: 40%;
-  border-radius: 3px !important;
-}
-
-.loginField {
-  padding: 0 3rem !important;
-}
-
-.signField {
-  padding: 0 3rem !important;
-}
-/*SingUp Form*/
-
-.signUpModal {
-  border-radius: 3px !important;
-}
-
-.signIcon {
-  text-align: center;
+  font-size: 4.25rem !important;
 }
 
 .userIcon {
   color: #00d1b2;
+}
+
+.loginIcon,
+.signIcon {
+  text-align: center;
+  position: relative;
+  bottom: 1rem;
+}
+
+.modalContent {
+  padding: 1.5rem 3.5rem 3.5rem !important;
+}
+
+.loginModal,
+.signUpModal {
+  width: 40%;
+  border-radius: 3px !important;
+  max-height: none !important;
+}
+
+.loginField,
+.signField {
+  position: relative;
+  bottom: 2rem;
+}
+
+.btnField {
+  position: relative;
+  top: 0rem;
 }
 
 
