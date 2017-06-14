@@ -48,13 +48,12 @@ router.get('/usersentposts', function(req, res){
  
   post_model.getUserSentPosts(sess.user_id, 10)
   .then(function(result){
-     
+      
     res.render('userSentPosts', {
         posts: result,
         moment: moment,
         loggedIn : true, 
-        jsFile: null,
-        serverTagsArr : null,
+        jsFile: null, 
         config: config, 
         printName: function() {
            return sess.firstName + ' ' + sess.lastName;
