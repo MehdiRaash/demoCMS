@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var moment = require('moment-jalaali');
+
 var config = require('../config/index.json'); 
 
 var tag_model = require('../models/tag_model');
@@ -15,8 +17,10 @@ router.use(function(req, res, next){
   
   if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
     res.redirect('/');  
+  }else{
+    next();
   }
-  next();
+  
 });
 router.get('/', function (req, res) {
   var sess = req.session; 
@@ -40,14 +44,14 @@ router.get('/', function (req, res) {
 
 });  
 router.get('/usersentposts', function(req, res){
-  var sess = req.session;
-
-  
+  var sess = req.session; 
+ 
   post_model.getUserSentPosts(sess.user_id, 10)
   .then(function(result){
-    console.log(result);
+     
     res.render('userSentPosts', {
         posts: result,
+        moment: moment,
         loggedIn : true, 
         jsFile: null,
         serverTagsArr : null,

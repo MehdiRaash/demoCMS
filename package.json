@@ -20,6 +20,7 @@
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "lme": "^1.5.1",
+    "moment-jalaali": "^0.6.1",
     "mongoose": "^4.9.8"
   }
 }
