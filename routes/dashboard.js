@@ -41,7 +41,8 @@ router.get('/', function (req, res) {
       });
     });   
 
-});  
+}); 
+
 router.get('/usersentposts', function(req, res){
   var sess = req.session; 
  
@@ -61,6 +62,7 @@ router.get('/usersentposts', function(req, res){
   });
  
 });
+
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
     
@@ -121,6 +123,9 @@ router.post('/new_post', jsonParser, function(req, res){
        res.sendStatus(404);
     } 
   
-}); 
+});
 
+router.delete('/', jsonParser, function (req, res) {
+  res.send('DELETE request to homepage');
+})
 module.exports = router;

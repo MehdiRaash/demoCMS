@@ -17,7 +17,24 @@
 
   <nav class="myNav" role="navigation">
     <div class="nav-wrapper navWrapp">
-      <a id="logo-container" href="/" class="brand-logo"><%= config.siteName %></a>
+      <a id="logo-container" href="/" class="brand-logo">
+      <%= config.siteName %>  
+          <div class="preloader-wrapper small" style="direction: ltr !important;top: 12px;">
+            <div class="spinner-layer spinner-red-only">
+              <div class="circle-clipper left">
+                          <div class="circle"></div>
+              </div><div class="gap-patch">
+                          <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                          <div class="circle"></div>
+              </div>
+            </div>
+          </div>  
+      </a>
+       
+        
+          
+         
       <ul class="left hide-on-med-and-down">
         <% if(loggedIn === false) {%>
         <li>
@@ -35,7 +52,7 @@
         </li>
         <li>
             <a class="btn-floating btn waves-effect waves-light red" href="dashboard/new_post"><i class="material-icons">add</i></a>
-        </li> 
+        </li>  
         <% } %>
       </ul> 
       <ul id="nav-mobile" class="side-nav">
@@ -92,7 +109,4 @@
       </form>
     </div>
    </div>
-  </nav>
-  
-
-  
+  </nav> 
