@@ -1,6 +1,8 @@
 var mongoose = require('mongoose'); 
 var db = mongoose.connection;
 
+var moment = require('moment-jalaali');
+
 
 var Schema = mongoose.Schema;
 
@@ -29,11 +31,15 @@ function getUserSentPosts(userId){
   return new Promise(function(resolve, reject){ 
 
     Post.find({ whoCreated_Id : userId })
-    .sort({ createdAt : 1 })
+    .sort({ createdAt : -1 })
     .exec(function(err,result) {
       if (err) reject(err);
 
-      resolve(result);
+      var newArr = result.map(function(post){
+        post.createdAt_fa = moment(post.createdAt).format('jYYYY/jM/jD') // 1981/07/17 
+        return post;
+      })
+      resolve(newArr);
     });
     
   });
@@ -69,7 +75,7 @@ function getLastPostsByTag(tagName, limit){
   return new Promise(function(resolve, reject){ 
       Post
       .find({ tags : { $in: [tagName] } , allowToShow : true }, { })
-      .sort( { createdAt: 1 } )
+      .sort( { createdAt: -1 } )
       .limit(limit)
       .exec(function(err,result) {
         if (err) reject(err);

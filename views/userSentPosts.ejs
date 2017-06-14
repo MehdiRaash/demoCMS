@@ -15,13 +15,14 @@
                     <p><%- post.text %></p>
                   </div>
                   <div class="card-action">
-                    <div class="row">
+                    <div class="row" style="margin-bottom:0 !important">
                       <div class="col s12 m3">
-                        <span class="left"><%- moment(post.createdAt).format('jYYYY/jM/jD') %></span>
+                        <span class="left"><%- post.createdAt_fa %></span>
                       </div>
                       <div class="col s12 m9">
                         <a href="#">نمایش در سایت</a>
                         <a href="#">ویرایش</a> 
+                        <a href="#">حذف</a> 
                       </div>
                     </div> 
                   </div> 

@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var moment = require('moment-jalaali');
 
 var config = require('../config/index.json'); 
 
@@ -50,8 +49,7 @@ router.get('/usersentposts', function(req, res){
   .then(function(result){
       
     res.render('userSentPosts', {
-        posts: result,
-        moment: moment,
+        posts: result, 
         loggedIn : true, 
         jsFile: null, 
         config: config, 
