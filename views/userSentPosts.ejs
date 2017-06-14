@@ -15,10 +15,16 @@
                     <p><%- post.text %></p>
                   </div>
                   <div class="card-action">
-                    <a href="#">نمایش در سایت</a>
-                    <a href="#">ویرایش</a>
-                    <span><%- moment(post.createdAt).format('jYYYY/jM/jD') %></span>
-                  </div>
+                    <div class="row">
+                      <div class="col s12 m3">
+                        <span class="left"><%- moment(post.createdAt).format('jYYYY/jM/jD') %></span>
+                      </div>
+                      <div class="col s12 m9">
+                        <a href="#">نمایش در سایت</a>
+                        <a href="#">ویرایش</a> 
+                      </div>
+                    </div> 
+                  </div> 
                 </div>
               </div>
             </div>
