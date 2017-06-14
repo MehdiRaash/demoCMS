@@ -1,0 +1,22 @@
+<% include common/header.ejs %>
+  <br> 
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4"> 
+      </div>
+      <div class="col s12 m8">
+        <%- if(posts.length !== 0){ %>
+          <%- posts.forEach(function(){ %>
+
+          <%- }) %>
+        <%- else{ %>
+        <div class="card-panel teal">
+          <span class="white-text">
+            شما تا به حال پستی ارسال نکرده اید.
+          </span>
+        </div>
+        <%- } %>
+      </div>
+    </div>
+  </div> 
+<% include common/footer.ejs %> 

@@ -9,14 +9,18 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
 
 var router = express.Router();
- 
-router.get('/', function (req, res) {
-  var sess = req.session;
 
+router.use(function(req, res, next){
+  var sess = req.session;
+  
   if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
     res.redirect('/');  
-
-  }else{
+  }
+  next();
+});
+router.get('/', function (req, res) {
+  var sess = req.session; 
+ 
     tag_model.getAllTagsName(null, function(tagsArr){ 
 
       var neatTagsArr = tagsArr.map(function(tagObj){
@@ -32,22 +36,33 @@ router.get('/', function (req, res) {
            return sess.firstName + ' ' + sess.lastName;
         }
       });
-    });  
-  }
+    });   
 
 });  
-router.get('/test', function(req, res){
-  tag_model.ifTagExists(['سیاسی','ورزشی'], function(){});
-  res.sendStatus(200)
+router.get('/usersentposts', function(req, res){
+  var sess = req.session;
+
+  
+  post_model.getUserSentPosts(sess.user_id, 10)
+  .then(function(result){
+    console.log(result);
+    res.render('userSentPosts', {
+        posts: result,
+        loggedIn : true, 
+        jsFile: null,
+        serverTagsArr : null,
+        config: config, 
+        printName: function() {
+           return sess.firstName + ' ' + sess.lastName;
+        }
+      });
+
+  });
+ 
 });
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
-   
-  if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
-    //res.redirect('/');
-    res.sendStatus(404); 
-  }else{        
-     
+    
       if(req.body.length !== 0){
 
       var temp = {
@@ -104,8 +119,7 @@ router.post('/new_post', jsonParser, function(req, res){
     }else{ //if no body were provided
        res.sendStatus(404);
     } 
- 
-   }
+  
 }); 
 
 module.exports = router;

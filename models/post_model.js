@@ -25,6 +25,20 @@ function insert_post( dataObj, callback ){
     });
 };
 
+function getUserSentPosts(userId){
+  return new Promise(function(resolve, reject){ 
+
+    Post.find({ whoCreated_Id : userId })
+    .sort({ createdAt : 1 })
+    .exec(function(err,result) {
+      if (err) reject(err);
+
+      resolve(result);
+    });
+    
+  });
+};
+
 function getLastPost( by ){
     
   Post.find({} ,function(err,result) {
@@ -100,5 +114,6 @@ module.exports = {
   getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
+  getUserSentPosts: getUserSentPosts,
   getLastPost: getLastPost
 };
