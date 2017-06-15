@@ -125,7 +125,6 @@ router.post('/new_post', jsonParser, function(req, res){
   
 });
 
-router.delete('/', jsonParser, function (req, res) {
-  res.send('DELETE request to homepage');
+router.delete('/', jsonParser, function (req, res) { 
 })
 module.exports = router;
