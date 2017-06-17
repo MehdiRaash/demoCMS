@@ -127,17 +127,56 @@ input:-webkit-autofill:focus {
 
 /*Main*/
 
+.newsCard {
+  top: 15px;
+}
+
 .mainTxt {
   text-align: justify;
 }
 
+.postContent {
+  padding: 10px !important;
+}
+
 .mainHeader {
+  font-size: 1.5rem;
   font-weight: bolder;
   color: #231b64;
 }
 
+.postTitle {
+  font-size: 1.25rem !important;
+}
+
+.postTitle a {
+  color: darkblue;
+}
+
+.sectionTitle {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  border-bottom: 5px solid #231b64;
+}
+
+.mainTitle {
+  font-size: 1.25rem;
+  font-weight: bolder;
+  color: white;
+  text-align: right;
+  background-color: #231b64;
+  padding: 0 20px;
+  position: relative;
+  top: 2px;
+  margin: 0 auto;
+}
+
 .mainIcon {
   color: #1c1650;
+}
+
+.readMore {
+  margin-top: 15px !important;
 }
 
 .contactHeader {
