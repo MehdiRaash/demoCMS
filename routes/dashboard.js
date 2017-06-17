@@ -138,7 +138,7 @@ router.delete('/delete_post', jsonParser, function (req, res) {
     res.json({ state: 1, removed: result});
   })
   .catch(function(err){
-    console.log(err)
+    console.log(err);
     res.sendStatus(404)
   });
   

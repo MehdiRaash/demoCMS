@@ -20,7 +20,7 @@
                         <span class="left"><%- post.createdAt_fa %></span>
                       </div>
                       <div class="col s12 m9">
-                        <a href="#">نمایش در سایت</a>
+                        <a href='<%- "/post/" + post["_id"].toString() + "/" + post.title.replace(/ /g,"-") %>'>نمایش در سایت</a>
                         <a href="#">ویرایش</a> 
                         <a href="#" class="red-text text-lighten-2 deletePost" data-postid=<%- post['_id'] %> >حذف</a> 
                       </div>
