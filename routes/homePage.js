@@ -34,40 +34,7 @@ router.get('/', function (req, res) {
     post_model.getLastPostsByTag('سیاسی', 4),
     post_model.getLastPostsByTag('اجتمائی', 4)
     ])
-    .then(function(result){  
-    //   var postManager = {
-    //     allPostId : [],
-    //     addId : function(arr){ 
-    //       arr.forEach(function(eachPost){ 
-    //         this.allPostId.push( eachPost['_id'].toString() ); 
-    //       }, this); 
-    //     },
-    //     removeId: function(id){
-    //       this.allPostId = this.allPostId.filter(function(eachId){
-    //         if(eachId === id){
-    //           return false
-    //         }else{
-    //           return true;
-    //         }
-    //       } ,this);
-    //     },
-    //     removeDuplicate: function(arr){  
-    //     var newArr = arr.filter(function(obj){  
-    //       if(this.allPostId.indexOf(obj['_id'].toString()) !== -1){ 
-    //         this.removeId(obj['_id'].toString());
-    //         return true;
-    //       }else{
-    //         return false;
-    //       }
-    //     }, this); 
-    //     return newArr;
-    //   }
-
-    // }; 
-    // postManager.addId(result[1]);
-    // postManager.addId(result[2]);
-    // postManager.addId(result[3]);
-
+    .then(function(result){   
 
       var allPostId = [];
       var gatherAllPostId = function(mainQueryArr){

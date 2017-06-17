@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\Server\3.4\bin\mongoimport.exe" --db x --collection x --drop --file x.json

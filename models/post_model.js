@@ -56,7 +56,7 @@ function getLastPost( by ){
 function getTheMainPost(){
   return new Promise(function(resolve, reject){ 
 
-    Post.findOne({ } ,function(err,result) {
+    Post.findOne({ mainPost: true } ,function(err,result) {
       if (err) reject(err);
       var arr = [];
       if(result === null){
