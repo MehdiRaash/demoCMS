@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 var config = require('../config/index.json'); 
 
 var tag_model = require('../models/tag_model');
@@ -9,14 +10,21 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
 
 var router = express.Router();
- 
-router.get('/', function (req, res) {
-  var sess = req.session;
 
+router.use(function(req, res, next){
+  var sess = req.session;
+  
   if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
     res.redirect('/');  
-
   }else{
+    next();
+  }
+  
+});
+
+router.get('/', function (req, res) {
+  var sess = req.session; 
+ 
     tag_model.getAllTagsName(null, function(tagsArr){ 
 
       var neatTagsArr = tagsArr.map(function(tagObj){
@@ -32,22 +40,33 @@ router.get('/', function (req, res) {
            return sess.firstName + ' ' + sess.lastName;
         }
       });
-    });  
-  }
+    });   
 
-});  
-router.get('/test', function(req, res){
-  tag_model.ifTagExists(['سیاسی','ورزشی'], function(){});
-  res.sendStatus(200)
+}); 
+
+router.get('/usersentposts', function(req, res){
+  var sess = req.session; 
+ 
+  post_model.getUserSentPosts(sess.user_id, 10)
+  .then(function(result){
+      
+    res.render('userSentPosts', {
+        posts: result, 
+        loggedIn : true, 
+        jsFile: '/public/js/userSentPosts_client.js',
+        config: config, 
+        printName: function() {
+           return sess.firstName + ' ' + sess.lastName;
+        }
+      });
+
+  });
+ 
 });
+
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
-   
-  if(typeof sess.loggedIn === "undefined" || sess.loggedIn === false){  
-    //res.redirect('/');
-    res.sendStatus(404); 
-  }else{        
-     
+    
       if(req.body.length !== 0){
 
       var temp = {
@@ -104,8 +123,25 @@ router.post('/new_post', jsonParser, function(req, res){
     }else{ //if no body were provided
        res.sendStatus(404);
     } 
- 
-   }
-}); 
+  
+});
 
+router.delete('/delete_post', jsonParser, function (req, res) { 
+
+  var sess = req.session;
+  if(!req.body.postId){
+    res.sendStatus(404);
+  } 
+
+  post_model.deletePostByWhoCreated({ postId: req.body.postId, ownerId: sess.user_id})
+  .then(function(result){
+    res.json({ state: 1, removed: result});
+  })
+  .catch(function(err){
+    console.log(err);
+    res.sendStatus(404)
+  });
+  
+  
+})
 module.exports = router;

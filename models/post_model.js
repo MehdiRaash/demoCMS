@@ -1,6 +1,8 @@
 var mongoose = require('mongoose'); 
 var db = mongoose.connection;
 
+var moment = require('moment-jalaali');
+
 
 var Schema = mongoose.Schema;
 
@@ -25,6 +27,25 @@ function insert_post( dataObj, callback ){
     });
 };
 
+function getUserSentPosts(userId, limit){
+  return new Promise(function(resolve, reject){ 
+
+    Post.find({ whoCreated_Id : userId })
+    .sort({ createdAt : -1 })
+    .limit(limit || 100)
+    .exec(function(err,result) {
+      if (err) reject(err);
+
+      var newArr = result.map(function(post){
+        post.createdAt_fa = moment(post.createdAt).format('jYYYY/jM/jD') // 1981/07/17 
+        return post;
+      })
+      resolve(newArr);
+    });
+    
+  });
+};
+
 function getLastPost( by ){
     
   Post.find({} ,function(err,result) {
@@ -36,7 +57,7 @@ function getLastPost( by ){
 function getTheMainPost(){
   return new Promise(function(resolve, reject){ 
 
-    Post.findOne({ } ,function(err,result) {
+    Post.findOne({ mainPost: true } ,function(err,result) {
       if (err) reject(err);
       var arr = [];
       if(result === null){
@@ -55,7 +76,7 @@ function getLastPostsByTag(tagName, limit){
   return new Promise(function(resolve, reject){ 
       Post
       .find({ tags : { $in: [tagName] } , allowToShow : true }, { })
-      .sort( { createdAt: 1 } )
+      .sort( { createdAt: -1 } )
       .limit(limit)
       .exec(function(err,result) {
         if (err) reject(err);
@@ -84,13 +105,24 @@ function findByTag(tagNameArr){
       if (err) reject(err);
 
       resolve(result);
-    });
+    }); 
+  });
+};
 
-    Post.find({ tags : { $in: tagNameArr } , allowToShow : true } , function(err,result) {
+function deletePostByWhoCreated(Obj){
+  return new Promise(function(resolve, reject){ 
+
+    Post.find( { _id: Obj.postId , whoCreated_Id: Obj.ownerId }, function(err,docs){
       if (err) reject(err);
+      if (!docs || !Array.isArray(docs) || docs.length === 0) reject('no docs found');
 
-      resolve(result);
+      docs.forEach( function (doc) {
+        doc.remove();
+        resolve(true);
+      });
+      
     });
+ 
   });
 };
 
@@ -100,5 +132,7 @@ module.exports = {
   getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
-  getLastPost: getLastPost
+  getUserSentPosts: getUserSentPosts,
+  getLastPost: getLastPost,
+  deletePostByWhoCreated: deletePostByWhoCreated
 };
