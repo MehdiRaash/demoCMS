@@ -7,6 +7,7 @@
     $(".deletePost").on('click', function(event){
 
       event.preventDefault();
+      var $postContainer = $(this).parents('div.eachPost');
       var postId = $(this).data('postid');
 
       var ajax = $.ajax({
@@ -22,7 +23,8 @@
 
       ajax.done(function( res ) { 
         if(res.state === 1){ 
-          Materialize.toast('پست شما با موفقیت حذف شد.', 4000); 
+          Materialize.toast('پست شما با موفقیت حذف شد.', 4000);  
+          $postContainer.hide('slow', function(){ $postContainer.remove(); });
         }
       });
 
