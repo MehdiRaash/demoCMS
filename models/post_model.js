@@ -27,11 +27,12 @@ function insert_post( dataObj, callback ){
     });
 };
 
-function getUserSentPosts(userId){
+function getUserSentPosts(userId, limit){
   return new Promise(function(resolve, reject){ 
 
     Post.find({ whoCreated_Id : userId })
     .sort({ createdAt : -1 })
+    .limit(limit || 100)
     .exec(function(err,result) {
       if (err) reject(err);
 
@@ -104,13 +105,24 @@ function findByTag(tagNameArr){
       if (err) reject(err);
 
       resolve(result);
-    });
+    }); 
+  });
+};
 
-    Post.find({ tags : { $in: tagNameArr } , allowToShow : true } , function(err,result) {
+function deletePostByWhoCreated(Obj){
+  return new Promise(function(resolve, reject){ 
+
+    Post.find( { _id: Obj.postId , whoCreated_Id: Obj.ownerId }, function(err,docs){
       if (err) reject(err);
+      if (!docs || !Array.isArray(docs) || docs.length === 0) reject('no docs found');
 
-      resolve(result);
+      docs.forEach( function (doc) {
+        doc.remove();
+        resolve(true);
+      });
+      
     });
+ 
   });
 };
 
@@ -121,5 +133,6 @@ module.exports = {
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
   getUserSentPosts: getUserSentPosts,
-  getLastPost: getLastPost
+  getLastPost: getLastPost,
+  deletePostByWhoCreated: deletePostByWhoCreated
 };

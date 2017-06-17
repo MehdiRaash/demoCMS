@@ -21,6 +21,7 @@ router.use(function(req, res, next){
   }
   
 });
+
 router.get('/', function (req, res) {
   var sess = req.session; 
  
@@ -126,7 +127,21 @@ router.post('/new_post', jsonParser, function(req, res){
 });
 
 router.delete('/delete_post', jsonParser, function (req, res) { 
-  console.log(req.body);
-  res.sendStatus(200);
+
+  var sess = req.session;
+  if(!req.body.postId){
+    res.sendStatus(404);
+  } 
+
+  post_model.deletePostByWhoCreated({ postId: req.body.postId, ownerId: sess.user_id})
+  .then(function(result){
+    res.json({ state: 1, removed: result});
+  })
+  .catch(function(err){
+    console.log(err)
+    res.sendStatus(404)
+  });
+  
+  
 })
 module.exports = router;

@@ -20,15 +20,15 @@
           }
       });
 
-        ajax.done(function( res ) { 
-          if(res.state === 1){ 
-            Materialize.toast('پست شما ارسال شد.', 4000); 
-          }
-        });
+      ajax.done(function( res ) { 
+        if(res.state === 1){ 
+          Materialize.toast('پست شما با موفقیت حذف شد.', 4000); 
+        }
+      });
 
-        ajax.always(function( res ){
-          $('#preloader').removeClass('active');
-        }); 
+      ajax.always(function( res ){
+        $('#preloader').removeClass('active');
+      }); 
 
     })
 
