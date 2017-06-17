@@ -1,57 +1,108 @@
 <% include common/header.ejs %>  
 
   <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
+    <% if(mainPost.posts.length !== 0){ %>
+    <div class="section no-pad-bot mainPost">
       <div class="container">
         <br><br>
-     <!--   <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-        -->
-       
-        <br><br>
-
+         <h1 class="header right white-text text-lighten-2"><%- mainPost.title %></h1>
+          <a href='<%- "/post/" + mainPost.posts[0]["_id"].toString() + "/" + mainPost.posts[0].title.replace(/ /g,"-") %>'>
+          
+            <div class="row">
+              <h5 class="header col s12 light">
+                <%- mainPost.posts[0].title %>
+              </h5>
+            </div>
+          </a> 
+        <br><br> 
       </div>
     </div>
+    <% } %>
     <div class="parallax"><img src="public/images/background1.jpg" alt="Unsplashed background img 1"></div>
   </div>
 
 
   <div class="container">
-    <div class="section">
+  
+  
 
       <!--   Icon Section   -->
       <div class="row">
-        <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">flash_on</i></h2>
-            <h5 class="center mainHeader">توسعه را سرعت می بخشد</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
+        <div class="col l4 m4 s12 right">
+          <div class="card newsCard">
+          <% if(sport.posts.length !== 0){ %> 
+            <div class="section sectionTitle">
+              <span class="center mainTitle"><%= sport.title %></span>
+            </div>
+            <div class="card-image cardImg">
+              <img src="/public/images/sport.jpg">
+              </div>
+            <% sport.posts.forEach(function(eachPost){ %> 
+            <div class="card-content postContent">
+            <div class="icon-block">   
+              <p class="mainHeader postTitle"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></p>
+              <p class="mainTxt light readMore"><%- eachPost.text %></p>
+            </div> 
+            </div>
+            <% }); %>
+          <% } else{ %>
+           <p class="">فاقد خبر <%= sport.title %></p>
+          <% } %>
+         
         </div>
-
-        <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">group</i></h2>
-            <h5 class="center mainHeader">با محوریت تجربه کاربری</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
-        </div>
-
-        <div class="col s12 m4 right">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons mainIcon">settings</i></h2>
-            <h5 class="center mainHeader">کاربرد آسان</h5>
-
-            <p class="mainTxt light">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-          </div>
+       </div>
+       
+      
+        <div class="col l4 m4 s12 right">
+         <div class="card newsCard">
+          <% if(social.posts.length !== 0){ %> 
+           <div class="section sectionTitle">
+             <span class="center mainTitle"><%= social.title %></span>
+            </div>
+            <div class="card-image cardImg">
+              <img src="/public/images/sport.jpg">
+              </div>
+            <% social.posts.forEach(function(eachPost){ %> 
+              <div class="card-content postContent">
+            <div class="icon-block">    
+               <p class="mainHeader postTitle"><%= eachPost.title %></p>
+              <p class="mainTxt light readMore"><%= eachPost.text %></p>
+            </div> 
+              </div>
+            <% }); %>
+          <% } else{ %>
+           <div class="section sectionTitle">
+           <span class="center mainTitle">فاقد خبر <%= social.title %></span>
+            </div>
+          <% } %>
         </div>
       </div>
 
+       <div class="col l4 m4 s12 right">
+         <div class="card newsCard">
+          <% if(politic.posts.length !== 0){ %> 
+           <div class="section sectionTitle">
+             <span class="center mainTitle"><%= politic.title %></span>
+             </div>
+            <div class="card-image cardImg">
+              <img src="/public/images/sport.jpg">
+              </div>
+              <% politic.posts.forEach(function(eachPost){ %> 
+               <div class="card-content postContent">
+            <div class="icon-block">    
+            <p class="mainHeader postTitle"><a href=""><%= eachPost.title %></a></p>
+             <p class="mainTxt light readMore"><%- eachPost.text %></p>
+            </div> 
+            </div>
+            <% }); %>
+          <% } else{ %>
+    <div class="section sectionTitle">
+           <span class="center mainTitle">فاقد خبر <%= politic.title %></span>
+          <% } %>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 
 
