@@ -52,7 +52,7 @@ router.get('/usersentposts', function(req, res){
     res.render('userSentPosts', {
         posts: result, 
         loggedIn : true, 
-        jsFile: null, 
+        jsFile: '/public/js/userSentPosts_client.js',
         config: config, 
         printName: function() {
            return sess.firstName + ' ' + sess.lastName;
@@ -125,6 +125,8 @@ router.post('/new_post', jsonParser, function(req, res){
   
 });
 
-router.delete('/', jsonParser, function (req, res) { 
+router.delete('/delete_post', jsonParser, function (req, res) { 
+  console.log(req.body);
+  res.sendStatus(200);
 })
 module.exports = router;

@@ -1,7 +1,6 @@
 (function($){
   $(function(){ 
      
-
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
 
@@ -16,7 +15,11 @@
        
       return autocompleteData;
     };  
-    
+    var resetTheForm = function() {
+      $("form#post_form")[0].reset();
+      $("#selectedTags").empty();
+    }
+    //Listeners:
     $('input.autocomplete').autocomplete({
       // data: {
       //   "ورزشی": null, 
@@ -98,10 +101,6 @@
 
       }
     });
-
-    function resetTheForm(){
-      $("form#post_form")[0].reset();
-      $("#selectedTags").empty();
-    }
+    
   }); // end of document ready
 })(jQuery); // end of jQuery name space
