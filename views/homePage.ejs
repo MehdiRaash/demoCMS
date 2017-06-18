@@ -30,20 +30,12 @@
       <div class="row">
         <div class="col s12 m4 right">
           <div class="card newsCard">		
-           <% if(sport.posts.length !== 0){ %> 		
-             <div class="section sectionTitle">		
-               <span class="center mainTitle"><%= sport.title %></span>		
-             </div>		
-             <div class="card-image cardImg">		
-               <img src="/public/images/sport.jpg">		
-               </div>		
-             <% sport.posts.forEach(function(eachPost){ %> 		
-             <div class="card-content postContent">		
-             <div class="icon-block">   		
-               <p class="mainHeader postTitle"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></p>		
-               <p class="mainTxt light readMore"><%- eachPost.text %></p>		
-             </div> 		
-             </div> 
+            </div>
+            <% sport.posts.forEach(function(eachPost){ %> 
+            <div class="icon-block">   
+              <h5 class="mainHeader"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></h5>
+              <p class="mainTxt light"><%- eachPost.text %></p>
+            </div> 
             <% }); %>
           <% } else{ %>
            <p class="">فاقد خبر <%= sport.title %></p>
