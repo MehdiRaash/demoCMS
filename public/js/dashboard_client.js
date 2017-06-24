@@ -4,10 +4,37 @@
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
 
-    var latestPostAjax = $.ajax({
+    // var latestPostAjaxJSON = $.ajax({
+    //       method: "GET",
+    //       url: "dashboard/getLatestPostsJSON",
+    //       dataType: "json",
+    //       contentType: "application/json;charset=utf-8",  
+    //       //data: JSON.stringify(data),
+    //       beforeSend: function(){  
+    //         $('#preloader').addClass('active');
+    //       } 
+    //     });
+
+    //   latestPostAjaxJSON.done(function( res ) {
+    //     var latestPostsDiv = $("#latestPosts");
+    //     $.each(res, function(index, val){ 
+    //       //console.log(val)
+    //       latestPostsDiv.append(
+    //         $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title);
+    //       );
+    //     }) 
+         
+    //   });
+
+    //   latestPostAjaxJSON.always(function( res ){
+    //     $('#preloader').removeClass('active');
+    //   }); 
+
+   
+    var latestPostAjaxHTML = $.ajax({
           method: "GET",
-          url: "dashboard/getLatestPosts",
-          dataType: "json",
+          url: "dashboard/getLatestPostsHTML",
+          dataType: "html",
           contentType: "application/json;charset=utf-8",  
           //data: JSON.stringify(data),
           beforeSend: function(){  
@@ -15,20 +42,15 @@
           } 
         });
 
-      latestPostAjax.done(function( res ) {
+      latestPostAjaxHTML.done(function( res ) {
         var latestPostsDiv = $("#latestPosts");
-        $.each(res, function(index, val){ 
-          //console.log(val)
-          latestPostsDiv.append(
-            $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title);
-          );
-        }) 
-         
+        latestPostsDiv.append(res);  
       });
 
-      latestPostAjax.always(function( res ){
+      latestPostAjaxHTML.always(function( res ){
         $('#preloader').removeClass('active');
       }); 
+
 
     var data = null; 
 

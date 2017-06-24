@@ -64,13 +64,26 @@ router.get('/usersentposts', function(req, res){
  
 });
 
-router.get('/getLatestPosts', function(req, res){
+router.get('/getLatestPostsJSON', function(req, res){
   var sess = req.session; 
 
   post_model.getLatestPosts()
   .then(function(result){
     res.json(result);
   });
+
+});
+
+router.get('/getLatestPostsHTML', function(req, res){
+
+  var sess = req.session; 
+
+  post_model.getLatestPosts()
+  .then(function(result){
+     res.render('ajaxHTMLBased/LatestPostsHTML', {
+        posts: result
+    });
+  }); 
 
 });
 router.post('/new_post', jsonParser, function(req, res){
