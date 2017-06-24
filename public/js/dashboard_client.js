@@ -20,7 +20,7 @@
         $.each(res, function(index, val){ 
           //console.log(val)
           latestPostsDiv.append(
-            $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title)
+            $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title);
           );
         }) 
          
