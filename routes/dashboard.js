@@ -64,6 +64,15 @@ router.get('/usersentposts', function(req, res){
  
 });
 
+router.get('/getLatestPosts', function(req, res){
+  var sess = req.session; 
+
+  post_model.getLatestPosts()
+  .then(function(result){
+    res.json(result);
+  });
+
+});
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
     

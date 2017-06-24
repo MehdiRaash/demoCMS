@@ -4,7 +4,32 @@
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
 
-    
+    var latestPostAjax = $.ajax({
+          method: "GET",
+          url: "dashboard/getLatestPosts",
+          dataType: "json",
+          contentType: "application/json;charset=utf-8",  
+          //data: JSON.stringify(data),
+          beforeSend: function(){  
+            $('#preloader').addClass('active');
+          } 
+        });
+
+      latestPostAjax.done(function( res ) {
+        var latestPostsDiv = $("#latestPosts");
+        $.each(res, function(index, val){ 
+          //console.log(val)
+          latestPostsDiv.append(
+            $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title)
+          );
+        }) 
+         
+      });
+
+      latestPostAjax.always(function( res ){
+        $('#preloader').removeClass('active');
+      }); 
+
     var data = null; 
 
     var getTags = function(){
