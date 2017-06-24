@@ -46,11 +46,19 @@ function getUserSentPosts(userId, limit){
   });
 };
 
-function getLastPost( by ){
+function getLatestPosts( limit ){
+  
+  return new Promise(function(resolve, reject){ 
+
+    Post.find({allowToShow : true})
+    .sort( { createdAt: -1 } )
+    .limit(limit || 10)
+    .exec(function(err,result) {
+      if (err) reject(err); 
+
+      resolve(result);
+    });
     
-  Post.find({} ,function(err,result) {
-    console.log(result)
-    // Result is an array of documents
   });
 };
 
@@ -132,7 +140,7 @@ module.exports = {
   getLastPostsByTag: getLastPostsByTag,
   getTheMainPost: getTheMainPost,
   insert_post: insert_post,
-  getUserSentPosts: getUserSentPosts,
-  getLastPost: getLastPost,
+  getUserSentPosts: getUserSentPosts, 
+  getLatestPosts:getLatestPosts,
   deletePostByWhoCreated: deletePostByWhoCreated
 };
