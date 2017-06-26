@@ -13,6 +13,7 @@ var jsonParser = bodyParser.json();
  
 
 router.get('/:postId/:persianText', function (req, res) {
+
   var sess = req.session;
 
   var renderObj = {};
@@ -28,11 +29,10 @@ router.get('/:postId/:persianText', function (req, res) {
     }
   } 
 
-  post_model.findById(req.params.postId) 
+  post_model
+  .findById(req.params.postId) 
   .then(function(result){
-    //return post_model.findByTag(['اجتمائی','سیاسی','ورزشی']);
- // }).then(function(result){
-    //console.log(result)
+   
     renderObj.post = result;
     res.render('post', renderObj);
   }); 
@@ -40,3 +40,7 @@ router.get('/:postId/:persianText', function (req, res) {
 }); 
 
 module.exports = router;
+
+ //return post_model.findByTag(['اجتمائی','سیاسی','ورزشی']);
+ // }).then(function(result){
+    //console.log(result)

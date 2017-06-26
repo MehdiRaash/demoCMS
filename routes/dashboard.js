@@ -47,7 +47,8 @@ router.get('/', function (req, res) {
 router.get('/usersentposts', function(req, res){
   var sess = req.session; 
  
-  post_model.getUserSentPosts(sess.user_id, 10)
+  post_model
+  .getUserSentPosts(sess.user_id, 10)
   .then(function(result){
       
     res.render('userSentPosts', {
@@ -86,6 +87,7 @@ router.get('/getLatestPostsHTML', function(req, res){
   }); 
 
 });
+
 router.post('/new_post', jsonParser, function(req, res){
   var sess = req.session;   
     

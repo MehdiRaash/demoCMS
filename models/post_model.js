@@ -28,16 +28,17 @@ function insert_post( dataObj, callback ){
 };
 
 function getUserSentPosts(userId, limit){
+  
   return new Promise(function(resolve, reject){ 
-
+    
     Post.find({ whoCreated_Id : userId })
     .sort({ createdAt : -1 })
-    .limit(limit || 100)
+    .limit(limit || 10)
     .exec(function(err,result) {
       if (err) reject(err);
 
       var newArr = result.map(function(post){
-        post.createdAt_fa = moment(post.createdAt).format('jYYYY/jM/jD') // 1981/07/17 
+        post.createdAt_fa = moment(post.createdAt).format('jYYYY/jM/jD')  
         return post;
       })
       resolve(newArr);
@@ -94,7 +95,7 @@ function getLastPostsByTag(tagName, limit){
   });
 };
 
-function findById(id, callback){
+function findById(id){
     return new Promise(function(resolve, reject){ 
 
     Post.findOne({ _id : id } ,function(err,result) {
