@@ -92,8 +92,7 @@ router.post('/submit', urlencodedParser, function (req, res) {
 
 router.post('/submit_ajax', urlencodedParser, function(req, res){
   var errors = [];  
-    
-  renderObj.errors = [];
+     
   //we are gonna check if an input is not set
   function checkName(input, errorMsg){ 
     if(typeof input === 'undefined' || input.length === 0){

@@ -32,12 +32,12 @@
       signUpAjax.done(function( res ) {
         var $errorList = $('#errorList');
         var $errorContainer = $('#errorContainer');
-        console.log(res);
+         
         if(res.signUpDone){
 
         }else{
           $.each(res.errors, function(index, val){
-            $errorContainer.append('<p class="red-text text-lighten-2"></p>').val(' - ', val);
+            $errorContainer.append($('<p class="red-text text-lighten-2 right-align"></p>').text(" - " + val));
           }); 
           $errorList.removeClass('hide')
         }
