@@ -60,7 +60,7 @@ app.use('/logout', logOut);
   
 var port  = process.env.PORT || config.port;
 app.listen(port, function(){  
-    console.log('server starts!');
+    console.log('server starts at port:', port);
 });
  
  
