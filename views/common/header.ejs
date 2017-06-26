@@ -83,24 +83,32 @@
   <div id="modal2" class="modal signUpModal">
     <div class="modal-content modalContent">   
     <p class="signIcon"><i class="fa fa-user fa-4x userIcon" aria-hidden="true"></i></p>
-     <form action="/signup/submit" method="POST"   autocomplete="off">
+     <form action="/signup/submit" method="POST" autocomplete="off" id="signup_form">
      <div class="row" style="margin:0 !important">
           <div class="col l6 m6 s6 signField right">
-            <input type="text" name="firstName"  placeholder="نام" class="demoCMS-input">
+            <input type="text" name="firstName" placeholder="نام" class="demoCMS-input">
           </div>
           <div class="col l6 m6 s6 signField right">
-            <input type="text" name="lastName"  placeholder="نام خانوادگی" class="demoCMS-input">
+            <input type="text" name="lastName" placeholder="نام خانوادگی" class="demoCMS-input">
           </div>
           </div>     
         <div class="row" style="margin:0 !important">
           <div class="col l12 m12 s12 signField">
-           <input id="email" name="email" type="email"  placeholder="ایمیل" class="demoCMS-input">
+           <input id="email" name="email" type="email" placeholder="ایمیل" class="demoCMS-input">
           </div>
           <div class="col l12 m12 s12 signField">
             <input type="password" name="password" id="password" placeholder="رمز عبور" class="demoCMS-input">
           </div>
+          <div class="col l12 m12 s12 errorList hide" id="errorList"> 
+            <div class="card-panel">
+              <h5 class="red-text text-darken-2">خطا :</h5> 
+              <div id="errorContainer">
+                
+              </div>
+            </div>   
+          </div>
           <div class="col l12 m12 s12 signField btnField">
-              <button class="waves-effect waves-light btn modal-close formBtn" type="submit" name="action">ثبت</button>
+              <button class="waves-effect waves-light btn formBtn" type="submit" name="action" id="signup_submit">ثبت</button>
           </div>
         </div>
       </form>
