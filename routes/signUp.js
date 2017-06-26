@@ -7,6 +7,7 @@ var signUp_model = require('../models/user_model');
 
 var router = express.Router();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var jsonParser = bodyParser.json();
 
 
 router.get('/', function (req, res) {  
@@ -90,9 +91,30 @@ router.post('/submit', urlencodedParser, function (req, res) {
   }
 }); 
 
-router.post('/submit_ajax', urlencodedParser, function(req, res){
+router.post('/submit_ajax', jsonParser, function(req, res){
   var errors = [];  
-     
+  
+  var signUpData = {};
+
+  req.body.forEach(function(theInput) {
+
+          switch (theInput.name) {
+            case 'firstName':
+              signUpData.firstName = theInput.value;
+              break;
+            case 'lastName':
+              signUpData.lastName = theInput.value;
+              break;
+            case 'email':
+              signUpData.email = theInput.value;
+              break;
+            case 'password': 
+              signUpData.password = theInput.value;
+            default:
+              break;
+          }
+
+        }, this); 
   //we are gonna check if an input is not set
   function checkName(input, errorMsg){ 
     if(typeof input === 'undefined' || input.length === 0){
@@ -129,10 +151,10 @@ router.post('/submit_ajax', urlencodedParser, function(req, res){
 
   }; 
 
-  checkName(req.body.firstName, 'نام وارد نشده است.');
-  checkName(req.body.lastName, 'نام خانوادگی وارد نشده است.');
-  checkEmail(req.body.email, 'ایمیل وارد نشده است.');
-  checkPassword(req.body.password, 'رمز عبور وارد نشده است.');
+  checkName(signUpData.firstName, 'نام وارد نشده است.');
+  checkName(signUpData.lastName, 'نام خانوادگی وارد نشده است.');
+  checkEmail(signUpData.email, 'ایمیل وارد نشده است.');
+  checkPassword(signUpData.password, 'رمز عبور وارد نشده است.');
 
    
   if(errors.length !== 0){ 
@@ -140,7 +162,7 @@ router.post('/submit_ajax', urlencodedParser, function(req, res){
   }else{
      
 
-    signUp_model.do_signUp(req.body, function(){
+    signUp_model.do_signUp(signUpData, function(){
 
       res.json({ signUpDone : true });
     
