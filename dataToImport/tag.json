@@ -11,7 +11,7 @@
         "_id" : ObjectId("59344d65f2a01d05a466232d"),
         "allowToshow" : false,
         "createdAt" : ISODate("2017-06-04T18:11:49.381Z"),
-        "name" : "اجتمائی",
+        "name" : "اجتماعی",
         "number" : 2,
         "whoCreated_Id" : ObjectId("592e57d1291fd538a081f8cb"),
         "__v" : 0
