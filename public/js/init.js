@@ -39,7 +39,8 @@
           $.each(res.errors, function(index, val){
             $errorContainer.append($('<p class="red-text text-lighten-2 right-align"></p>').text(" - " + val));
           }); 
-          $errorList.removeClass('hide')
+          $errorList.removeClass('hide');
+          
         }
       });
 
