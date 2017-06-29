@@ -5,7 +5,7 @@ var UserSchema = mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    admin: Boolean,
+    isAdmin: Boolean,
     createdAt: Date,
     active: Boolean
 });
@@ -24,7 +24,7 @@ function do_signUp(input, callback){
         email: input.email,
         password: input.password,
         createdAt: Date.now(),
-        admin: false,
+        isAdmin: false,
         active: true
       });
 
