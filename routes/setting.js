@@ -49,6 +49,7 @@ router.post('/submit', jsonParser, function(req, res){
     req.body.forEach(function(theInput) { 
       switch (theInput.name) {
         case 'firstName':
+          //if
           temp.firstName = theInput.value;
           break;
         case 'lastName':
