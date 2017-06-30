@@ -42,10 +42,12 @@
         </li>
         <% }else if(loggedIn === true){ %>
         <li>
-          <div class="chip">
-            <img src="/public/images/user_images/user.jpg" alt="Contact Person">
-            <%- printName() %>
-          </div>
+          <a href="./setting" style="padding:0 !important">
+            <div class="chip">
+              <img src="/public/images/user_images/user.jpg" alt="Contact Person">
+              <%- printName() %>
+            </div>
+          </a>
         </li>
         <li>
             <a class="btn-floating btn waves-effect waves-light red" href="dashboard/new_post"><i class="material-icons">add</i></a>

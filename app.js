@@ -38,6 +38,7 @@ var homePage  = require('./routes/homePage');
 var login     = require('./routes/login');
 var dashboard = require('./routes/dashboard');
 var signUp    = require('./routes/signUp');
+var setting   = require('./routes/setting');
 var logout    = require('./routes/logout');
 var testPage  = require('./routes/testPage');
 var post      = require('./routes/post'); 
@@ -49,6 +50,7 @@ app.use('/', homePage);
 app.use('/login', login);
 app.use('/signup', signUp);
 app.use('/dashboard', dashboard);
+app.use('/setting', setting);
 app.use('/logout', logout);
 app.use('/testpage', testPage);
 app.use('/post', post)
