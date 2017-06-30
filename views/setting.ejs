@@ -3,12 +3,37 @@
   <div class="container">
     <div class="section">
       <div class="row">
-         
-        <div class="row">
-          <div class="col m6 s12 offset-m6">
-          
-          </div>
+        <h5>تنظیمات پروفایل</h5>
+        <form action="#" id="setting_form">
+        <div class="row"> 
+            <div class="input-field col s10 m4 right">
+              <input id="post_title" type="text" class="validate required" name="firstName" data-length="40">
+              <label for="post_title" class=""><%- firstName %></label>
+              <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+            </div> 
+            <div class="input-field col s10 m4 right">
+              <input id="post_title"  type="text" class="validate required" name="lastName" data-length="40">
+              <label for="post_title" class=""><%- lastName %></label>
+              <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+            </div> 
+        </div>
+        <div class="row hide" >
+            <div class="file-field input-field col s10 m4 right">
+              <div class="btn">
+                <span>انتخاب عکس</span>
+                <input type="file" name="profile_pic">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </form>
         </div> 
+        <div class="row">
+          <div class="file-field input-field col s10 m8 right">
+            <a id="submit" class="waves-effect waves-light btn left">ثبت تغییرات</a>
+          </div>
+        </div>
       </div>
     </div>
   </div> 

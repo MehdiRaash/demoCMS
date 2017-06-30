@@ -52,7 +52,21 @@ function do_logIn(user_email, user_password, callback){
 
 };
 
+function updateName(firstName, lastName, userId){
+  return new Promise(function(resolve, reject){
+    User.findOne({ _id: userId }, function(err, obj){
+      if (err) reject(err);
+      if(obj){
+        User.update({ _id: userId }, { firstName: firstName, lastName: lastName }, null, function(){
+          resolve(true);
+        })
+      }
+    });
+  })
+};
+
 module.exports = {
+  updateName: updateName,
   do_signUp: do_signUp,
   do_logIn: do_logIn
 };
