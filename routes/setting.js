@@ -40,6 +40,10 @@ router.get('/', function (req, res) {
     }); 
 
 }); 
+router.post('/uploadPic', function(req, res){
+  var sess = req.session;
+  
+});
 
 router.post('/submit', jsonParser, function(req, res){
   var sess = req.session;   

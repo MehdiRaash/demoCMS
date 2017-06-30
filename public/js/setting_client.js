@@ -12,6 +12,10 @@
       $('input').blur()
     }, 0);
 
+    $('input#profilePic').on('change', function(){
+      console.log('sdd')
+    });
+
     $("a#submit").on('click', function(event){
       event.preventDefault();
       //$("form#post_form")[0].reset();
