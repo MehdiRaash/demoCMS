@@ -40,7 +40,7 @@
              <div class="card-content postContent">		
              <div class="icon-block">   		
                <p class="mainHeader postTitle"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></p>		
-               <p class="mainTxt light readMore"><%- eachPost.text %></p>		
+               <p class="mainTxt light readMore"><%- eachPost.text.substr(0,200)+ '...' %></p>		
              </div> 		
              </div> 
               <% }); %>
@@ -63,7 +63,7 @@
              <div class="card-content postContent">		
              <div class="icon-block">   		
                <p class="mainHeader postTitle"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></p>		
-               <p class="mainTxt light readMore"><%- eachPost.text %></p>		
+               <p class="mainTxt light readMore"><%- eachPost.text.substr(0,200)+ '...' %></p>		
              </div> 		
              </div> 
               <% }); %>
@@ -86,7 +86,7 @@
              <div class="card-content postContent">		
              <div class="icon-block">   		
                <p class="mainHeader postTitle"><a href='<%- "/post/" + eachPost["_id"].toString() + "/" + eachPost.title.replace(/ /g,"-") %>'> <%= eachPost.title %></a></p>		
-               <p class="mainTxt light readMore"><%- eachPost.text %></p>		
+               <p class="mainTxt light readMore"><%- eachPost.text.substr(0,200)+ '...' %></p>		
              </div> 		
              </div> 
               <% }); %>
