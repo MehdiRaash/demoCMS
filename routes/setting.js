@@ -67,7 +67,7 @@ router.post('/submit', jsonParser, function(req, res){
     .then(function(result){
       sess.firstName = temp.firstName;
       sess.lastName = temp.lastName;
-      res.json({state : 1})
+      res.json({state : 1, updateDone: result})
     });
 
 

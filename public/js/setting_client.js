@@ -11,10 +11,7 @@
       $('label').removeClass('active');
       $('input').blur()
     }, 0);
-
-    $('input#profilePic').on('change', function(){
-      console.log('sdd')
-    });
+  
 
     $("a#submit").on('click', function(event){
       event.preventDefault();
@@ -34,7 +31,9 @@
         });
 
       signUpAjax.done(function( res ) { 
-         Materialize.toast('تغییرات ذخیره شد.', 4000);
+        if(res.updateDone){
+          Materialize.toast('تغییرات ذخیره شد.', 4000);
+        }  
       });
 
       signUpAjax.always(function( res ){

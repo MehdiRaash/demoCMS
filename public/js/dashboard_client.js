@@ -4,37 +4,10 @@
     $('.button-collapse').sideNav();
     $('.parallax').parallax(); 
 
-    // var latestPostAjaxJSON = $.ajax({
-    //       method: "GET",
-    //       url: "dashboard/getLatestPostsJSON",
-    //       dataType: "json",
-    //       contentType: "application/json;charset=utf-8",  
-    //       //data: JSON.stringify(data),
-    //       beforeSend: function(){  
-    //         $('#preloader').addClass('active');
-    //       } 
-    //     });
-
-    //   latestPostAjaxJSON.done(function( res ) {
-    //     var latestPostsDiv = $("#latestPosts");
-    //     $.each(res, function(index, val){ 
-    //       //console.log(val)
-    //       latestPostsDiv.append(
-    //         $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title);
-    //       );
-    //     }) 
-         
-    //   });
-
-    //   latestPostAjaxJSON.always(function( res ){
-    //     $('#preloader').removeClass('active');
-    //   }); 
-
-   
-    var latestPostAjaxHTML = $.ajax({
+    var latestPostAjaxJSON = $.ajax({
           method: "GET",
-          url: "dashboard/getLatestPostsHTML",
-          dataType: "html",
+          url: "dashboard/getLatestPostsJSON",
+          dataType: "json",
           contentType: "application/json;charset=utf-8",  
           //data: JSON.stringify(data),
           beforeSend: function(){  
@@ -42,14 +15,39 @@
           } 
         });
 
-      latestPostAjaxHTML.done(function( res ) {
+      latestPostAjaxJSON.done(function( res ) {
         var latestPostsDiv = $("#latestPosts");
-        latestPostsDiv.append(res);  
+
+        $.each(res, function(index, val){ 
+          var a = $('<a href="#" class="light" style="padding:10px 0;display:block" ></a>').text(val.title);
+          latestPostsDiv.append(a);
+        }) 
+         
       });
 
-      latestPostAjaxHTML.always(function( res ){
+      latestPostAjaxJSON.always(function( res ){
         $('#preloader').removeClass('active');
       }); 
+
+   
+    // var latestPostAjaxHTML = $.ajax({
+    //       method: "GET",
+    //       url: "dashboard/getLatestPostsHTML",
+    //       dataType: "html",
+    //       contentType: "application/json;charset=utf-8",  
+    //       beforeSend: function(){  
+    //         $('#preloader').addClass('active');
+    //       } 
+    //     });
+
+    //   latestPostAjaxHTML.done(function( res ) {
+    //     var latestPostsDiv = $("#latestPosts");
+    //     latestPostsDiv.append(res);  
+    //   });
+
+    //   latestPostAjaxHTML.always(function( res ){
+    //     $('#preloader').removeClass('active');
+    //   }); 
 
 
     var data = null; 

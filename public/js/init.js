@@ -14,10 +14,9 @@
 
     $("button#signup_submit").on('click', function(event){
       event.preventDefault();
-      //$("form#post_form")[0].reset();
 
       var data = $("form#signup_form").serializeArray();  
-
+     
       var signUpAjax = $.ajax({
           method: "POST",
           url: "./signup/submit_ajax",
@@ -38,8 +37,9 @@
           $("#success").removeClass('hide');
         }else{
           $.each(res.errors, function(index, val){
-            $errorContainer.append($('<p class="red-text text-lighten-2 right-align"></p>').text(" - " + val));
-          }); 
+            var p = $('<p class="red-text text-lighten-2 right-align"></p>').text(" - " + val);
+            $errorContainer.append(p);
+          });  
           $errorList.removeClass('hide');
 
         }

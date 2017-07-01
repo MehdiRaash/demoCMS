@@ -160,8 +160,7 @@ router.post('/submit_ajax', jsonParser, function(req, res){
   if(errors.length !== 0){ 
     res.json({ signUpDone: false, errors: errors });
   }else{
-     
-
+    
     signUp_model.do_signUp(signUpData, function(){
 
       res.json({ signUpDone : true });
