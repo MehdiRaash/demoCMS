@@ -44,7 +44,7 @@ var testPage  = require('./routes/testPage');
 var post      = require('./routes/post'); 
 var logOut    = require('./routes/logOut');
 
-app.use('/public', express.static(__dirname+'/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 app.use('/', homePage);
 app.use('/login', login);
